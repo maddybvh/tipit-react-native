@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Input, ListItem} from 'react-native-elements';
+import RangeSlider from 'react-native-range-slider';
 
 export default function App() {
   return (
