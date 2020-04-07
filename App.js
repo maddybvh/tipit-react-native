@@ -5,9 +5,21 @@ import RangeSlider from 'react-native-range-slider';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+            <View style={styles.container}>
+                <Input
+                  placeholder='Bill'
+                  leftIcon={{ type: 'font-awesome', name: 'dollar' }}
+                />
+                <Input
+                  placeholder='Tip low'
+                  rightIcon={{ type: 'font-awesome', name: 'percent' }}
+                />
+                <Input
+                  placeholder='Tip high'
+                  rightIcon={{ type: 'font-awesome', name: 'percent' }}
+                />
+            </View>
+
   );
 }
 
