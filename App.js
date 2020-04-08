@@ -3,38 +3,113 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { Input, ListItem} from 'react-native-elements';
 
 export default function App() {
+    //Determine if a string is a palindrome
+    function palindrome(str) {
+      var re = '.';
+      var lowRegStr = str.toLowerCase().replace(re, '');
+      var reverseStr = lowRegStr
+        .split('')
+        .reverse()
+        .join('');
+      return reverseStr === lowRegStr;
+    }
+  
+    // Returns an array of palindromes between numLow and numHigh
+    function palindromeArray(numLow, numHigh) {
+      var palindromeArray = [];
+  
+      for (let i = numLow; i <= numHigh; i += 0.01) {
+        let n = i.toFixed(2);
+        if (palindrome(n.toString())) {
+          palindromeArray.push(parseFloat(n));
+        }
+      }
+      return palindromeArray;
+    }
+  
+    //Output all possible palindromic tips within the given parameters.
+    function findPalTips(billAmount, tipPercentLow, tipPercentHigh) {
+      const tipArray = palindromeArray(
+        billAmount * tipPercentLow * 0.01,
+        billAmount * tipPercentHigh * 0.01
+      );
+      return tipArray;
+    }
+  
+    //Create an array with all totals with palindrome tips
+    function arrayTipsAndTotals(billAmount, tipArray) {
+      let i;
+      var results = [];
+      for (i of tipArray) {
+        let total = Number(i) + Number(billAmount);
+        let n = total.toFixed(2);
+        var result = new Result (billAmount, i, n)
+        results.push(result)
+      }
+  
+      return results;
+    }
+  
+    //Outputs an array of palindromic tips and their corresponding palindromic totals, if any exist.
+    function findPalTotals(billAmount, tipArray) {
+      let i;
+      var results = [];
+      for (i of tipArray) {
+        let total = Number(billAmount) + Number(i);
+        let n = total.toFixed(2);
+        if (palindrome(n.toString())) {
+          const result = new Result (billAmount, i, n)
+          results.push(result)        
+        }
+      }
+      return results
+    }
+  
+  function Result (bill, tip, total) {
+    this.bill = bill
+    this.tip = tip
+    this.total = total
+  }
 
   class Tipit extends Component {
     state = {
       bill: '',
       tipLow: '18',
       tipHigh: '25',
-      results: [
-        {
-          bill: '$200',
-          tip: '$20',
-          total: '$120',
-        },
-        {
-          bill: '$200',
-          tip: '$10',
-          total: '$60',
-        },
-        {
-          bill: '$200',
-          tip: '$8',
-          total: '$48',
-        },
-      ]
+      results: [],
+      message: ''
     }
     handleBill = (text) => {
-      this.setState({bill: text})
+      this.setState({bill: parseFloat(text)}, this.findResults())
     }
     handleTipLow = (text) => {
-      this.setState({tipLow: text})
+      this.setState({tipLow: parseFloat(text)}, this.findResults())
     }
     handleTipHigh = (text) => {
-      this.setState({tipHigh: text})
+      this.setState({tipHigh: parseFloat(text)}, this.findResults())
+    }
+
+    //Update the state based on the functions above
+    findResults(){
+      if (this.state.bill && this.state.tipLow && this. state.tipHigh && (this.state.tipLow <= this.state.tipHigh)){
+        const bill = this.state.bill;
+        const tipLow = this.state.tipLow;
+        const tipHigh = this.state.tipHigh;
+  
+        const tipArray = findPalTips(bill, tipLow, tipHigh);
+        const allTotalArray = arrayTipsAndTotals(bill, tipArray);
+        const palTotalArray = findPalTotals(bill, tipArray);
+          
+        if (palTotalArray && palTotalArray.length) { //both tip & total are arrays
+          this.setState({message: 'Woot! Both tip and total can be palidromes!'})
+          this.setState({results: palTotalArray})
+          return
+        } else if (tipArray && tipArray.length) {
+          this.setState({message: 'You can tip in palindrome!'})
+          this.setState({results: allTotalArray})
+          return
+        }
+      }
     }
     
     render (){
@@ -55,9 +130,6 @@ export default function App() {
                   rightIcon={{ type: 'font-awesome', name: 'percent' }}
                   onChangeText={this.handleTipHigh}
                 />
-                <Text style={{padding: 10, fontSize: 42}}>
-                  {this.state.bill}
-                </Text>
                 <View>
                   {
                     this.state.results.map((l, i) => (
