@@ -1,44 +1,66 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { Input, ListItem} from 'react-native-elements';
-import RangeSlider from 'react-native-range-slider';
 
 export default function App() {
-    const list = [
-      {
-        bill: '$200',
-        tip: '$20',
-        total: '$120',
-      },
-      {
-        bill: '$50',
-        tip: '$10',
-        total: '$60',
-      },
-      {
-        bill: '$40',
-        tip: '$8',
-        total: '$48',
-      },
-    ]
+
+  class Tipit extends Component {
+    state = {
+      bill: '',
+      tipLow: '18',
+      tipHigh: '25',
+      results: [
+        {
+          bill: '$200',
+          tip: '$20',
+          total: '$120',
+        },
+        {
+          bill: '$200',
+          tip: '$10',
+          total: '$60',
+        },
+        {
+          bill: '$200',
+          tip: '$8',
+          total: '$48',
+        },
+      ]
+    }
+    handleBill = (text) => {
+      this.setState({bill: text})
+    }
+    handleTipLow = (text) => {
+      this.setState({tipLow: text})
+    }
+    handleTipHigh = (text) => {
+      this.setState({tipHigh: text})
+    }
     
-  return (
-            <View style={styles.container}>
+    render (){
+      return (
+            <View>
                 <Input
                   placeholder='Bill'
                   leftIcon={{ type: 'font-awesome', name: 'dollar' }}
+                  onChangeText={bill => handleBill(bill)}
                 />
                 <Input
                   placeholder='Tip low'
                   rightIcon={{ type: 'font-awesome', name: 'percent' }}
+                  onChangeText={tipLow => handleTipLow(tipLow)}
                 />
                 <Input
                   placeholder='Tip high'
                   rightIcon={{ type: 'font-awesome', name: 'percent' }}
+                  onChangeText={tipHigh => handleTipHigh(tipHigh)}
                 />
+                <Text style={{padding: 10, fontSize: 42}}>
+                  {this.state.bill}
+                </Text>
                 <View>
                   {
-                    list.map((l, i) => (
+                    this.state.results.map((l, i) => (
                       <ListItem
                         key={i}
                         leftElement={
@@ -57,10 +79,17 @@ export default function App() {
                     ))
                   }
                 </View>
-
             </View>
+            );
+          }
+  }
 
-  );
+  return (
+    <View style={styles.container}>
+      <Tipit />
+    </View>
+  )
+  
 }
 
 const styles = StyleSheet.create({
