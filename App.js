@@ -136,6 +136,7 @@ export default function App() {
                   rightIcon={{ type: 'font-awesome', name: 'percent' }}
                   onChangeText={this.handleTipHigh}
                 />
+                <Text>{this.state.message}</Text>
                 <View>
                   {
                     this.state.results.map((l, i) => (
@@ -143,16 +144,16 @@ export default function App() {
                         key={i}
                         leftElement={
                           <View>
-                            <Text>{l.bill}</Text>
+                            <Text>${l.bill.toFixed(2)}</Text>
                           </View>
                           }
                         title={
                         <View>
-                          <Text>{l.tip}</Text>
+                          <Text>${l.tip.toFixed(2)}</Text>
                         </View>}
                         rightElement={
                         <View>
-                          <Text>{l.total}</Text>
+                          <Text>${l.total}</Text>
                         </View>
                         }
                         bottomDivider
