@@ -80,13 +80,19 @@ export default function App() {
       message: ''
     }
     handleBill = (text) => {
-      this.setState({bill: parseFloat(text)}, this.findResults())
+      this.setState({bill: parseFloat(text)}, function(){
+        this.findResults()
+      })
     }
     handleTipLow = (text) => {
-      this.setState({tipLow: parseFloat(text)}, this.findResults())
+      this.setState({tipLow: parseFloat(text)}, function(){
+        this.findResults()
+      })
     }
     handleTipHigh = (text) => {
-      this.setState({tipHigh: parseFloat(text)}, this.findResults())
+      this.setState({tipHigh: parseFloat(text)}, function(){
+        this.findResults()
+      })
     }
 
     //Update the state based on the functions above
@@ -140,7 +146,10 @@ export default function App() {
                             <Text>{l.bill}</Text>
                           </View>
                           }
-                        title={l.tip}
+                        title={
+                        <View>
+                          <Text>{l.tip}</Text>
+                        </View>}
                         rightElement={
                         <View>
                           <Text>{l.total}</Text>
