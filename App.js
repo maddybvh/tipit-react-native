@@ -6,7 +6,7 @@ import RangeSlider from 'react-native-range-slider';
 export default function App() {
     const list = [
       {
-        bill: '$100',
+        bill: '$200',
         tip: '$20',
         total: '$120',
       },
@@ -14,6 +14,11 @@ export default function App() {
         bill: '$50',
         tip: '$10',
         total: '$60',
+      },
+      {
+        bill: '$40',
+        tip: '$8',
+        total: '$48',
       },
     ]
     
@@ -36,9 +41,17 @@ export default function App() {
                     list.map((l, i) => (
                       <ListItem
                         key={i}
-                        leftElement={l.bill}
+                        leftElement={
+                          <View>
+                            <Text>{l.bill}</Text>
+                          </View>
+                          }
                         title={l.tip}
-                        rightElement={l.total}
+                        rightElement={
+                        <View>
+                          <Text>{l.total}</Text>
+                        </View>
+                        }
                         bottomDivider
                       />
                     ))
