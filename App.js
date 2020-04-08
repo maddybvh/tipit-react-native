@@ -128,11 +128,13 @@ export default function App() {
                 />
                 <Input
                   placeholder='Tip low'
+                  defaultValue='18'
                   rightIcon={{ type: 'font-awesome', name: 'percent' }}
                   onChangeText={this.handleTipLow}
                 />
                 <Input
                   placeholder='Tip high'
+                  defaultValue='25'
                   rightIcon={{ type: 'font-awesome', name: 'percent' }}
                   onChangeText={this.handleTipHigh}
                 />
