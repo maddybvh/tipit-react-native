@@ -43,17 +43,17 @@ export default function App() {
                 <Input
                   placeholder='Bill'
                   leftIcon={{ type: 'font-awesome', name: 'dollar' }}
-                  onChangeText={bill => handleBill(bill)}
+                  onChangeText={this.handleBill}
                 />
                 <Input
                   placeholder='Tip low'
                   rightIcon={{ type: 'font-awesome', name: 'percent' }}
-                  onChangeText={tipLow => handleTipLow(tipLow)}
+                  onChangeText={this.handleTipLow}
                 />
                 <Input
                   placeholder='Tip high'
                   rightIcon={{ type: 'font-awesome', name: 'percent' }}
-                  onChangeText={tipHigh => handleTipHigh(tipHigh)}
+                  onChangeText={this.handleTipHigh}
                 />
                 <Text style={{padding: 10, fontSize: 42}}>
                   {this.state.bill}
