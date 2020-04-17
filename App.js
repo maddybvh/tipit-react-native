@@ -133,27 +133,28 @@ export default function App () {
       return (
             <View>
               <Text style={styles.title}>tipit</Text>             
-              <View>
                 <Text style={styles.dashes}>---------------------------------------------------</Text>
+                <View>
                 <Text style={styles.label}>Your Bill:</Text>
                 <Text style={styles.helper}>Pre-tip amount</Text>
                 <TextInput style={styles.input}
-                  defaultValue='$'
                   onChangeText={this.handleBill}
                 />
               </View>
               <View>
                 <Text style={styles.label}>Tip Range:</Text>
                 <Text style={styles.helper}>Low to high</Text>
-                <TextInput style={styles.input}
-                  defaultValue='18%'
-                  onChangeText={this.handleTipLow}
-                />
-                <Text style={styles.label}>to</Text>
-                <TextInput style={styles.input}
-                  defaultValue='25%'
-                  onChangeText={this.handleTipHigh}
-                />
+                <View style={styles.inputGroup}>
+                  <TextInput style={styles.input}
+                    defaultValue='18'
+                    onChangeText={this.handleTipLow}
+                  />
+                  <Text style={styles.label, {margin:7}}>to</Text>
+                  <TextInput style={styles.input}
+                    defaultValue='25'
+                    onChangeText={this.handleTipHigh}
+                  />                
+                </View>
                 <Text style={styles.dashes}>---------------------------------------------------</Text>
               </View>                
               <Text style={styles.message}>{this.state.message}</Text>
@@ -201,13 +202,13 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 60,
     margin: 10,
+    display: 'flex',
   },
   title:{
     fontFamily: 'JetBrainsMono-Bold',
     fontSize: 24,
     textAlign: 'center',
     lineHeight: 27,
-    marginBottom: 10,
   },
   label: {
     fontFamily: 'JetBrainsMono-Regular', 
@@ -229,6 +230,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 14,
     textAlign: 'center',
+    marginTop: 10
   },
   input: {
     borderColor: '#000000',
@@ -236,11 +238,18 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     height: 43,
     width: 104,
-    alignSelf: 'flex-end',
     fontFamily: 'JetBrainsMono-Regular',
     fontSize: 18,
     lineHeight: 21,
     padding: 5,
-    textAlign: 'right'
+    textAlign: 'right',
+    marginRight: 10,
+    alignSelf: 'flex-end',
+    marginTop: -35   
+  },
+  inputGroup: {
+    flexDirection: "row",
+    alignSelf: 'flex-end',
+    marginTop: -30
   }
 });
