@@ -132,7 +132,10 @@ export default function App () {
     render (){
       return (
             <View>
-              <Text style={styles.title}>tipit</Text>             
+              <View>
+                <Text style={styles.title}>tipit</Text> 
+              </View>
+                          
                 <Text style={styles.dashes}>---------------------------------------------------</Text>
                 <View>
                 <Text style={styles.label}>Your Bill:</Text>
@@ -149,7 +152,7 @@ export default function App () {
                     defaultValue='18'
                     onChangeText={this.handleTipLow}
                   />
-                  <Text style={styles.label, {margin:7}}>to</Text>
+                  <Text style={styles.normalText, {margin:7}}>to</Text>
                   <TextInput style={styles.input}
                     defaultValue='25'
                     onChangeText={this.handleTipHigh}
@@ -201,7 +204,7 @@ export default function App () {
 const styles = StyleSheet.create({
   container: {
     marginTop: 60,
-    margin: 10,
+    margin: 20,
     display: 'flex',
   },
   title:{
@@ -214,7 +217,7 @@ const styles = StyleSheet.create({
     fontFamily: 'JetBrainsMono-Regular', 
     fontSize: 18,
     lineHeight: 24,
-    marginTop: 10,
+    marginTop: 20,
   },
   helper: {
     fontFamily: 'JetBrainsMono-Italic', 
@@ -224,13 +227,14 @@ const styles = StyleSheet.create({
   normalText: {
     fontFamily: 'JetBrainsMono-Regular', 
     fontSize: 12,
+    lineHeight: 18,
   },
   dashes: {
     fontFamily: 'JetBrainsMono-Regular',
     fontSize: 12,
     lineHeight: 14,
     textAlign: 'center',
-    marginTop: 10
+    marginTop: 10,
   },
   input: {
     borderColor: '#000000',
@@ -245,12 +249,12 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     marginRight: 10,
     alignSelf: 'flex-end',
-    marginTop: -35   
+    marginTop: -40   
   },
   inputGroup: {
     flexDirection: "row",
     alignSelf: 'flex-end',
-    marginTop: -30,
+    marginTop: -25,
   },
   results: {
     fontFamily: 'JetBrainsMono-Regular',
