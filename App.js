@@ -132,49 +132,55 @@ export default function App () {
     render (){
       return (
             <View>
-              <Text style={{ fontFamily: 'JetBrainsMono-Bold', fontSize: 40 }}>tipit</Text>
-                <Input
-                  placeholder='Bill'
-                  leftIcon={{ type: 'font-awesome', name: 'dollar' }}
+              <Text style={styles.title}>tipit</Text>             
+              <View>
+                <Text style={styles.dashes}>---------------------------------------------------</Text>
+                <Text style={styles.label}>Your Bill:</Text>
+                <Text style={styles.helper}>Pre-tip amount</Text>
+                <TextInput style={styles.input}
+                  defaultValue='$'
                   onChangeText={this.handleBill}
                 />
-                <Input
-                  placeholder='Tip low'
-                  defaultValue='18'
-                  rightIcon={{ type: 'font-awesome', name: 'percent' }}
+              </View>
+              <View>
+                <Text style={styles.label}>Tip Range:</Text>
+                <Text style={styles.helper}>Low to high</Text>
+                <TextInput style={styles.input}
+                  defaultValue='18%'
                   onChangeText={this.handleTipLow}
                 />
-                <Input
-                  placeholder='Tip high'
-                  defaultValue='25'
-                  rightIcon={{ type: 'font-awesome', name: 'percent' }}
+                <Text style={styles.label}>to</Text>
+                <TextInput style={styles.input}
+                  defaultValue='25%'
                   onChangeText={this.handleTipHigh}
                 />
-                <Text>{this.state.message}</Text>
-                <View>
-                  {
-                    this.state.results.map((l, i) => (
-                      <ListItem
-                        key={i}
-                        leftElement={
-                          <View>
-                            <Text>${l.bill.toFixed(2)}</Text>
-                          </View>
-                          }
-                        title={
+                <Text style={styles.dashes}>---------------------------------------------------</Text>
+              </View>                
+              <Text style={styles.message}>{this.state.message}</Text>
+              <View>
+                {
+                  this.state.results.map((l, i) => (
+                    <ListItem
+                      key={i}
+                      leftElement={
                         <View>
-                          <Text>${l.tip.toFixed(2)}</Text>
-                        </View>}
-                        rightElement={
-                        <View>
-                          <Text>${l.total}</Text>
+                          <Text>${l.bill.toFixed(2)}</Text>
                         </View>
                         }
-                        bottomDivider
-                      />
-                    ))
-                  }
-                </View>
+                      title={
+                      <View>
+                        <Text>${l.tip.toFixed(2)}</Text>
+                      </View>}
+                      rightElement={
+                      <View>
+                        <Text>${l.total}</Text>
+                      </View>
+                      }
+                      bottomDivider
+                    />
+                  ))
+                }
+              </View>
             </View>
             );
           }
@@ -193,8 +199,48 @@ export default function App () {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
+    marginTop: 60,
+    margin: 10,
   },
+  title:{
+    fontFamily: 'JetBrainsMono-Bold',
+    fontSize: 24,
+    textAlign: 'center',
+    lineHeight: 27,
+    marginBottom: 10,
+  },
+  label: {
+    fontFamily: 'JetBrainsMono-Regular', 
+    fontSize: 18,
+    lineHeight: 24,
+    marginTop: 10,
+  },
+  helper: {
+    fontFamily: 'JetBrainsMono-Italic', 
+    fontSize: 10,
+    lineHeight: 14,
+  },
+  normalText: {
+    fontFamily: 'JetBrainsMono-Regular', 
+    fontSize: 12,
+  },
+  dashes: {
+    fontFamily: 'JetBrainsMono-Regular',
+    fontSize: 12,
+    lineHeight: 14,
+    textAlign: 'center',
+  },
+  input: {
+    borderColor: '#000000',
+    borderWidth: 1,
+    borderRadius: 3,
+    height: 43,
+    width: 104,
+    alignSelf: 'flex-end',
+    fontFamily: 'JetBrainsMono-Regular',
+    fontSize: 18,
+    lineHeight: 21,
+    padding: 5,
+    textAlign: 'right'
+  }
 });
