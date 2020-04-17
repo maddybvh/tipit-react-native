@@ -157,24 +157,24 @@ export default function App () {
                 </View>
                 <Text style={styles.dashes}>---------------------------------------------------</Text>
               </View>                
-              <Text style={styles.message}>{this.state.message}</Text>
+              <Text style={styles.normalText}>{this.state.message}</Text>
               <View>
                 {
                   this.state.results.map((l, i) => (
-                    <ListItem
+                    <ListItem 
                       key={i}
                       leftElement={
                         <View>
-                          <Text>${l.bill.toFixed(2)}</Text>
+                          <Text style={styles.results}>${l.bill.toFixed(2)} + </Text>
                         </View>
                         }
                       title={
                       <View>
-                        <Text>${l.tip.toFixed(2)}</Text>
+                        <Text style={styles.results}>${l.tip.toFixed(2)}</Text>
                       </View>}
                       rightElement={
                       <View>
-                        <Text>${l.total}</Text>
+                        <Text style={styles.results}>${l.total}</Text>
                       </View>
                       }
                       bottomDivider
@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 3,
     height: 43,
-    width: 104,
+    minWidth: 60,
     fontFamily: 'JetBrainsMono-Regular',
     fontSize: 18,
     lineHeight: 21,
@@ -250,6 +250,10 @@ const styles = StyleSheet.create({
   inputGroup: {
     flexDirection: "row",
     alignSelf: 'flex-end',
-    marginTop: -30
+    marginTop: -30,
+  },
+  results: {
+    fontFamily: 'JetBrainsMono-Regular',
+    fontSize: 18
   }
 });
