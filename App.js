@@ -136,7 +136,7 @@ export default function App () {
                 <Text style={styles.title}>tipit</Text> 
               </View>
                           
-                <Text style={styles.dashes}>---------------------------------------------------</Text>
+                <Text style={styles.dashes}>---------------------------------------------</Text>
                 <View>
                 <Text style={styles.label}>Your Bill:</Text>
                 <Text style={styles.helper}>Pre-tip amount</Text>
@@ -158,7 +158,7 @@ export default function App () {
                     onChangeText={this.handleTipHigh}
                   />                
                 </View>
-                <Text style={styles.dashes}>---------------------------------------------------</Text>
+                <Text style={styles.dashes}>---------------------------------------------</Text>
               </View>                
               <Text style={styles.normalText}>{this.state.message}</Text>
               <View>
