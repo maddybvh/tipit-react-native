@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { Input, ListItem} from 'react-native-elements';
+import { useFonts } from '@use-expo/font';
+import { AppLoading } from 'expo';
 
-export default function App() {
+
+
+
+export default function App () {
+  let [fontsLoaded] = useFonts({
+    'JetBrainsMono-Regular': require('./assets/fonts/JetBrainsMono-Regular.ttf'),
+    'JetBrainsMono-Bold': require('./assets/fonts/JetBrainsMono-Bold.ttf'),
+    'JetBrainsMono-Italic': require('./assets/fonts/JetBrainsMono-Italic.ttf'),
+  });
+
     //Determine if a string is a palindrome
     function palindrome(str) {
       var re = '.';
@@ -121,6 +132,7 @@ export default function App() {
     render (){
       return (
             <View>
+              <Text style={{ fontFamily: 'JetBrainsMono-Bold', fontSize: 40 }}>tipit</Text>
                 <Input
                   placeholder='Bill'
                   leftIcon={{ type: 'font-awesome', name: 'dollar' }}
@@ -167,13 +179,16 @@ export default function App() {
             );
           }
   }
-
-  return (
-    <View style={styles.container}>
-      <Tipit />
-    </View>
-  )
-  
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+  else {
+    return (
+      <View style={styles.container}>
+        <Tipit />
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
