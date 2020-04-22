@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import Results from './Results';
 
 let resultID = 0;
@@ -133,7 +133,9 @@ export default class Caculator extends React.Component {
     render (){
         return (
             <View>                          
-                <Text style={styles.dashes}>---------------------------------------------</Text>
+                <Image 
+                    source={require('../../assets/dashes.png')}
+                    style={{margin:15, alignSelf: 'center'}} />
                 <View>
                 <Text style={styles.label}>Your Bill:</Text>
                 <Text style={styles.helper}>Pre-tip amount</Text>
@@ -164,7 +166,9 @@ export default class Caculator extends React.Component {
                             </TouchableOpacity>
                         </View>
                         }
-                    <Text style={[styles.dashes, {marginTop:20}]}>---------------------------------------------</Text>
+                    <Image 
+                        source={require('../../assets/dashes.png')}
+                        style={{margin:15, alignSelf: 'center'}} />
                 </View>
                 <Results results={this.state.results}/>                            
             </View>
