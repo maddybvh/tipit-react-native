@@ -102,7 +102,10 @@ export default class Caculator extends React.Component {
         this.findResults()
     })
     }
-    clearTable = () => this.setState({results: []})
+    clearTable = () => {
+        this.setState({results: []});
+        this.setState({message: ''});
+    }
     //Update the state based on the functions above
     findResults(){
         this.clearTable();
@@ -152,13 +155,16 @@ export default class Caculator extends React.Component {
                             onChangeText={this.handleTipHigh}
                         />                
                     </View>
-                    <View>
-                        <Text style={styles.normalText}>{this.state.message}</Text>
-                        <TouchableOpacity onPress={this.clearTable}>
-                            <Text style={styles.clearButton}>X Clear</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <Text style={styles.dashes}>---------------------------------------------</Text>
+                    {/* If there are results, print the message and clear button. */}
+                    {this.state.results.length > 0 &&
+                        <View>
+                            <Text style={styles.normalText}>{this.state.message}</Text>
+                            <TouchableOpacity onPress={this.clearTable}>
+                                <Text style={styles.clearButton}>X Clear</Text>
+                            </TouchableOpacity>
+                        </View>
+                        }
+                    <Text style={[styles.dashes, {marginTop:20}]}>---------------------------------------------</Text>
                 </View>
                 <Results results={this.state.results}/>                            
             </View>
