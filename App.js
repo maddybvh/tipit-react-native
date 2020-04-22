@@ -6,6 +6,7 @@ import { Header } from './src/components/Header';
 import Calculator from './src/components/Calculator';
 
 
+
 export default function App () {
   let [fontsLoaded] = useFonts({
     'JetBrainsMono-Regular': require('./assets/fonts/JetBrainsMono-Regular.ttf'),

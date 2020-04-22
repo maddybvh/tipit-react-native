@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { ListItem} from 'react-native-elements';
+import Results from './Results';
 
 //Determine if a string is a palindrome
 function palindrome(str) {
@@ -145,53 +146,8 @@ export default class Caculator extends React.Component {
                     </View>
                     <Text style={styles.normalText}>{this.state.message}</Text>
                     <Text style={styles.dashes}>---------------------------------------------</Text>
-                </View>                            
-                <View>
-                    {/* Only render table head if there are results */}
-                    {this.state.results.length > 0 &&
-                        <ListItem 
-                            key='header'
-                            leftElement={
-                                <View>
-                                    <Text style={styles.tableHead}>Bill</Text>
-                                </View>
-                                }
-                            title={
-                            <View>
-                                <Text style={styles.tableHead}>        Tip</Text>
-                            </View>}
-                            rightElement={
-                            <View>
-                                <Text style={styles.tableHead}>Total</Text>
-                            </View>
-                        }
-                        bottomDivider
-                        />
-                    }
-                    {/* Render the results table */}
-                    {
-                    this.state.results.map((l, i) => (
-                        <ListItem 
-                            key={i}
-                            leftElement={
-                                <View>
-                                    <Text style={styles.results}>${l.bill.toFixed(2)} + </Text>
-                                </View>
-                                }
-                            title={
-                            <View>
-                                <Text style={styles.results}>${l.tip.toFixed(2)}</Text>
-                            </View>}
-                            rightElement={
-                            <View>
-                                <Text style={styles.results}>${l.total}</Text>
-                            </View>
-                        }
-                        bottomDivider
-                        />
-                    ))
-                    }
                 </View>
+                <Results />                            
             </View>
             );
         }
