@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
-import { ListItem} from 'react-native-elements';
+import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
 import Results from './Results';
 
 let resultID = 0;
@@ -103,10 +102,10 @@ export default class Caculator extends React.Component {
         this.findResults()
     })
     }
-  
+    clearTable = () => this.setState({results: []})
     //Update the state based on the functions above
     findResults(){
-        this.setState({results: []})
+        this.clearTable();
     if (this.state.bill && this.state.tipLow && this. state.tipHigh && (this.state.tipLow <= this.state.tipHigh)){
         const bill = this.state.bill;
         const tipLow = this.state.tipLow;
@@ -143,17 +142,22 @@ export default class Caculator extends React.Component {
                     <Text style={styles.label}>Tip Range:</Text>
                     <Text style={styles.helper}>Low to high</Text>
                     <View style={styles.inputGroup}>
-                    <TextInput style={styles.input}
-                        defaultValue='18'
-                        onChangeText={this.handleTipLow}
-                    />
-                    <Text style={styles.normalText, {margin:7}}>to</Text>
-                    <TextInput style={styles.input}
-                        defaultValue='25'
-                        onChangeText={this.handleTipHigh}
-                    />                
+                        <TextInput style={styles.input}
+                            defaultValue='18'
+                            onChangeText={this.handleTipLow}
+                        />
+                        <Text style={styles.normalText, {margin:7}}>to</Text>
+                        <TextInput style={styles.input}
+                            defaultValue='25'
+                            onChangeText={this.handleTipHigh}
+                        />                
                     </View>
-                    <Text style={styles.normalText}>{this.state.message}</Text>
+                    <View>
+                        <Text style={styles.normalText}>{this.state.message}</Text>
+                        <TouchableOpacity onPress={this.clearTable}>
+                            <Text style={styles.clearButton}>X Clear</Text>
+                        </TouchableOpacity>
+                    </View>
                     <Text style={styles.dashes}>---------------------------------------------</Text>
                 </View>
                 <Results results={this.state.results}/>                            
@@ -181,6 +185,13 @@ const styles = StyleSheet.create({
       fontSize: 12,
       lineHeight: 20,
       marginTop: 10,
+    },
+    clearButton: {
+        fontFamily: 'JetBrainsMono-Regular',
+        fontSize: 12,
+        lineHeight: 14,
+        color: '#FF0000',
+        textAlign: 'right'
     },
     dashes: {
       fontFamily: 'JetBrainsMono-Regular',
