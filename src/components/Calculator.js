@@ -128,48 +128,70 @@ export default class Caculator extends React.Component {
                 <TextInput style={styles.input}
                 onChangeText={this.handleBill}
                 />
-            </View>
-            <View>
-                <Text style={styles.label}>Tip Range:</Text>
-                <Text style={styles.helper}>Low to high</Text>
-                <View style={styles.inputGroup}>
-                <TextInput style={styles.input}
-                    defaultValue='18'
-                    onChangeText={this.handleTipLow}
-                />
-                <Text style={styles.normalText, {margin:7}}>to</Text>
-                <TextInput style={styles.input}
-                    defaultValue='25'
-                    onChangeText={this.handleTipHigh}
-                />                
                 </View>
-                <Text style={styles.normalText}>{this.state.message}</Text>
-                <Text style={styles.dashes}>---------------------------------------------</Text>
-            </View>                            
-            <View>
-                {
-                this.state.results.map((l, i) => (
-                    <ListItem 
-                    key={i}
-                    leftElement={
+                <View>
+                    <Text style={styles.label}>Tip Range:</Text>
+                    <Text style={styles.helper}>Low to high</Text>
+                    <View style={styles.inputGroup}>
+                    <TextInput style={styles.input}
+                        defaultValue='18'
+                        onChangeText={this.handleTipLow}
+                    />
+                    <Text style={styles.normalText, {margin:7}}>to</Text>
+                    <TextInput style={styles.input}
+                        defaultValue='25'
+                        onChangeText={this.handleTipHigh}
+                    />                
+                    </View>
+                    <Text style={styles.normalText}>{this.state.message}</Text>
+                    <Text style={styles.dashes}>---------------------------------------------</Text>
+                </View>                            
+                <View>
+                    {/* Only render table head if there are results */}
+                    {this.state.results.length > 0 &&
+                        <ListItem 
+                        key='header'
+                        leftElement={
+                            <View>
+                            <Text style={styles.tableHead}>Bill</Text>
+                            </View>
+                            }
+                        title={
                         <View>
-                        <Text style={styles.results}>${l.bill.toFixed(2)} + </Text>
+                            <Text style={styles.tableHead}>      Tip</Text>
+                        </View>}
+                        rightElement={
+                        <View>
+                            <Text style={styles.tableHead}>Total</Text>
                         </View>
                         }
-                    title={
-                    <View>
-                        <Text style={styles.results}>${l.tip.toFixed(2)}</Text>
-                    </View>}
-                    rightElement={
-                    <View>
-                        <Text style={styles.results}>${l.total}</Text>
-                    </View>
+                        bottomDivider
+                        />
                     }
-                    bottomDivider
-                    />
-                ))
-                }
-            </View>
+                    {/* Render the results table */}
+                    {
+                    this.state.results.map((l, i) => (
+                        <ListItem 
+                        key={i}
+                        leftElement={
+                            <View>
+                            <Text style={styles.results}>${l.bill.toFixed(2)} + </Text>
+                            </View>
+                            }
+                        title={
+                        <View>
+                            <Text style={styles.results}>${l.tip.toFixed(2)}</Text>
+                        </View>}
+                        rightElement={
+                        <View>
+                            <Text style={styles.results}>${l.total}</Text>
+                        </View>
+                        }
+                        bottomDivider
+                        />
+                    ))
+                    }
+                </View>
             </View>
             );
         }
@@ -193,6 +215,7 @@ const styles = StyleSheet.create({
       fontFamily: 'JetBrainsMono-Regular', 
       fontSize: 12,
       lineHeight: 20,
+      marginTop: 10,
     },
     dashes: {
       fontFamily: 'JetBrainsMono-Regular',
@@ -219,6 +242,11 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       alignSelf: 'flex-end',
       marginTop: -25,
+    },
+    tableHead: {
+        fontFamily: 'JetBrainsMono-Bold',
+        fontSize: 14,
+        lineHeight: 16,
     },
     results: {
       fontFamily: 'JetBrainsMono-Regular',
