@@ -111,7 +111,7 @@ export default class Caculator extends React.Component {
         this.setState({results: palTotalArray})
         return
         } else if (tipArray && tipArray.length) {
-        this.setState({message: 'You can tip in palindrome!'})
+        this.setState({message: 'You can tip in ' + tipArray.length + ' palindromes!'})
         this.setState({results: allTotalArray})
         return
         }
@@ -143,9 +143,9 @@ export default class Caculator extends React.Component {
                     onChangeText={this.handleTipHigh}
                 />                
                 </View>
+                <Text style={styles.normalText}>{this.state.message}</Text>
                 <Text style={styles.dashes}>---------------------------------------------</Text>
-            </View>                
-            <Text style={styles.normalText}>{this.state.message}</Text>
+            </View>                            
             <View>
                 {
                 this.state.results.map((l, i) => (
@@ -192,14 +192,13 @@ const styles = StyleSheet.create({
     normalText: {
       fontFamily: 'JetBrainsMono-Regular', 
       fontSize: 12,
-      lineHeight: 18,
+      lineHeight: 20,
     },
     dashes: {
       fontFamily: 'JetBrainsMono-Regular',
       fontSize: 12,
       lineHeight: 14,
       textAlign: 'center',
-      marginTop: 10,
     },
     input: {
       borderColor: '#000000',
