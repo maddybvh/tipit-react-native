@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { ListItem} from 'react-native-elements';
 import Results from './Results';
 
+let resultID = 0;
+
 //Determine if a string is a palindrome
 function palindrome(str) {
     var re = '.';
@@ -40,13 +42,15 @@ function palindrome(str) {
   function arrayTipsAndTotals(billAmount, tipArray) {
     let i;
     var results = [];
+    let stringBill = billAmount.toFixed(2).toString();
     for (i of tipArray) {
       let total = Number(i) + Number(billAmount);
-      let n = total.toFixed(2);
-      var result = new Result (billAmount, i, n)
+      let stringTip = i.toFixed(2).toString();
+      let stringTotal = total.toFixed(2).toString();
+      var result = new Result (resultID.toString(), stringBill, stringTip, stringTotal)
       results.push(result)
+      resultID += 1;
     }
-
     return results;
   }
 
@@ -54,21 +58,25 @@ function palindrome(str) {
   function findPalTotals(billAmount, tipArray) {
     let i;
     var results = [];
+    let stringBill = billAmount.toFixed(2).toString()
     for (i of tipArray) {
-      let total = Number(billAmount) + Number(i);
-      let n = total.toFixed(2);
-      if (palindrome(n.toString())) {
-        const result = new Result (billAmount, i, n)
-        results.push(result)        
-      }
+        let total = Number(billAmount) + Number(i);
+        let stringTotal = total.toFixed(2).toString()
+        let stringTip = i.toFixed(2).toString();
+        if (palindrome(stringTotal)) {
+            const result = new Result (resultID.toString(), stringBill, stringTip, stringTotal)
+            results.push(result)
+        }
+        resultID += 1;
     }
     return results
   }
 
-function Result (bill, tip, total) {
-  this.bill = bill
-  this.tip = tip
-  this.total = total
+function Result (id, bill, tip, total) {
+    this.id = id
+    this.bill = bill
+    this.tip = tip
+    this.total = total
 }
 
 
@@ -99,6 +107,7 @@ export default class Caculator extends React.Component {
     //Update the state based on the functions above
     findResults(){
     if (this.state.bill && this.state.tipLow && this. state.tipHigh && (this.state.tipLow <= this.state.tipHigh)){
+        this.setState({results: []})
         const bill = this.state.bill;
         const tipLow = this.state.tipLow;
         const tipHigh = this.state.tipHigh;
@@ -108,12 +117,12 @@ export default class Caculator extends React.Component {
         const palTotalArray = findPalTotals(bill, tipArray);
         
         if (palTotalArray && palTotalArray.length) { //both tip & total are arrays
-        this.setState({message: 'Woot! Both tip and total can be palidromes!'})
-        this.setState({results: palTotalArray})
+            this.setState({message: 'Woot! There are ' + palTotalArray.length + ' ways for the tip AND total to be palindromes!'})
+            this.setState({results: palTotalArray})
         return
         } else if (tipArray && tipArray.length) {
-        this.setState({message: 'You can tip in ' + tipArray.length + ' palindromes!'})
-        this.setState({results: allTotalArray})
+            this.setState({message: 'You can tip in ' + tipArray.length + ' palindromes!'})
+            this.setState({results: allTotalArray})
         return
         }
     }
@@ -147,7 +156,7 @@ export default class Caculator extends React.Component {
                     <Text style={styles.normalText}>{this.state.message}</Text>
                     <Text style={styles.dashes}>---------------------------------------------</Text>
                 </View>
-                <Results />                            
+                <Results results={this.state.results}/>                            
             </View>
             );
         }
