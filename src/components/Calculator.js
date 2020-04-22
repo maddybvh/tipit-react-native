@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { ListItem} from 'react-native-elements';
 
@@ -71,7 +71,7 @@ function Result (bill, tip, total) {
 }
 
 
-export default class Caculator extends Component {
+export default class Caculator extends React.Component {
     state = {
         bill: '',
         tipLow: '18',
