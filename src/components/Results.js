@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  SafeAreaView,
   TouchableOpacity,
   FlatList,
   StyleSheet,
@@ -42,6 +41,13 @@ export default class Results extends React.Component {
                 />               
                 )}
                 keyExtractor={item => item.id}
+                ListHeaderComponent={
+                    <View style={styles.tableHead}>
+                        <Text style={styles.tableHead}>Bill</Text>
+                        <Text style={styles.tableHead}>Tip</Text>
+                        <Text style={[styles.tableHead, {textAlign: 'right'}]}>Total</Text>
+                    </View>
+                }
             />
         );
     }
@@ -61,6 +67,10 @@ const styles = StyleSheet.create({
         fontFamily: 'JetBrainsMono-Bold',
         fontSize: 14,
         lineHeight: 16,
+        marginHorizontal: 10,
+        flex: 1, 
+        flexDirection: 'row', 
+        justifyContent: 'space-evenly'
         },
     results: {
         fontFamily: 'JetBrainsMono-Regular',
