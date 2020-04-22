@@ -40,12 +40,13 @@ export default class Results extends React.Component {
                 )}
                 keyExtractor={item => item.id}
                 ListHeaderComponent={
-                    <View style={styles.tableHead}>
-                        <Text style={styles.tableHead}>Bill</Text>
-                        <Text style={styles.tableHead}>Tip</Text>
-                        <Text style={[styles.tableHead, {textAlign: 'right'}]}>Total</Text>
-                    </View>
-                }
+                    this.props.results.length > 0 &&
+                        <View style={styles.tableHead}>
+                            <Text style={styles.tableHead}>Bill</Text>
+                            <Text style={styles.tableHead}>Tip</Text>
+                            <Text style={[styles.tableHead, {textAlign: 'right'}]}>Total</Text>
+                        </View>
+                    }
             />
         );
     }

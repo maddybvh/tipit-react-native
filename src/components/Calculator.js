@@ -106,8 +106,8 @@ export default class Caculator extends React.Component {
   
     //Update the state based on the functions above
     findResults(){
-    if (this.state.bill && this.state.tipLow && this. state.tipHigh && (this.state.tipLow <= this.state.tipHigh)){
         this.setState({results: []})
+    if (this.state.bill && this.state.tipLow && this. state.tipHigh && (this.state.tipLow <= this.state.tipHigh)){
         const bill = this.state.bill;
         const tipLow = this.state.tipLow;
         const tipHigh = this.state.tipHigh;
@@ -207,14 +207,5 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       alignSelf: 'flex-end',
       marginTop: -25,
-    },
-    tableHead: {
-        fontFamily: 'JetBrainsMono-Bold',
-        fontSize: 14,
-        lineHeight: 16,
-    },
-    results: {
-      fontFamily: 'JetBrainsMono-Regular',
-      fontSize: 18
     }
   });
