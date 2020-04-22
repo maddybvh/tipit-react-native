@@ -150,20 +150,20 @@ export default class Caculator extends React.Component {
                     {/* Only render table head if there are results */}
                     {this.state.results.length > 0 &&
                         <ListItem 
-                        key='header'
-                        leftElement={
+                            key='header'
+                            leftElement={
+                                <View>
+                                    <Text style={styles.tableHead}>Bill</Text>
+                                </View>
+                                }
+                            title={
                             <View>
-                            <Text style={styles.tableHead}>Bill</Text>
+                                <Text style={styles.tableHead}>        Tip</Text>
+                            </View>}
+                            rightElement={
+                            <View>
+                                <Text style={styles.tableHead}>Total</Text>
                             </View>
-                            }
-                        title={
-                        <View>
-                            <Text style={styles.tableHead}>      Tip</Text>
-                        </View>}
-                        rightElement={
-                        <View>
-                            <Text style={styles.tableHead}>Total</Text>
-                        </View>
                         }
                         bottomDivider
                         />
@@ -172,20 +172,20 @@ export default class Caculator extends React.Component {
                     {
                     this.state.results.map((l, i) => (
                         <ListItem 
-                        key={i}
-                        leftElement={
+                            key={i}
+                            leftElement={
+                                <View>
+                                    <Text style={styles.results}>${l.bill.toFixed(2)} + </Text>
+                                </View>
+                                }
+                            title={
                             <View>
-                            <Text style={styles.results}>${l.bill.toFixed(2)} + </Text>
+                                <Text style={styles.results}>${l.tip.toFixed(2)}</Text>
+                            </View>}
+                            rightElement={
+                            <View>
+                                <Text style={styles.results}>${l.total}</Text>
                             </View>
-                            }
-                        title={
-                        <View>
-                            <Text style={styles.results}>${l.tip.toFixed(2)}</Text>
-                        </View>}
-                        rightElement={
-                        <View>
-                            <Text style={styles.results}>${l.total}</Text>
-                        </View>
                         }
                         bottomDivider
                         />
