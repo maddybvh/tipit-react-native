@@ -9,21 +9,19 @@ import {
 import Constants from 'expo-constants';
 
 function Item({ id, bill, tip, total, selected, onSelect }) {
-  return (
-      
+  return (      
         <TouchableOpacity 
             //   onPress={}
             style={[
-                styles.item
+                styles.item,               
             ]}
             >
-                <View {...{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                    <Text style={styles.results}>${bill} + </Text>
-                    <Text style={styles.results}>${tip}</Text>
-                    <Text style={styles.total}>${total}</Text>
-                </View>
+            <View {...{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                <Text style={styles.results}>${bill} + </Text>
+                <Text style={styles.results}>${tip}</Text>
+                <Text style={styles.total}>${total}</Text>
+            </View>
         </TouchableOpacity>
-    
   );
 }
 
@@ -33,12 +31,12 @@ export default class Results extends React.Component {
         return (
             <FlatList
                 data={this.props.results}
-                renderItem={({ item }) => (
-                <Item
-                    bill={item.bill}
-                    tip={item.tip}
-                    total={item.total}
-                />               
+                renderItem={({ item, index }) => (
+                    <Item
+                        bill={item.bill}
+                        tip={item.tip}
+                        total={item.total}
+                    />               
                 )}
                 keyExtractor={item => item.id}
                 ListHeaderComponent={
@@ -62,6 +60,8 @@ const styles = StyleSheet.create({
         padding: 10,
         marginVertical: 8,
         marginHorizontal: 10,
+        borderRadius: 3,
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
     },
     tableHead: {
         fontFamily: 'JetBrainsMono-Bold',
