@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
     },
     normalText: {
       fontFamily: 'JetBrainsMono-Bold', 
-      fontSize: 12,
-      lineHeight: 20,
+      fontSize: 14,
+      lineHeight: 16,
       marginTop: 10,
       textAlign: 'center'
     },
