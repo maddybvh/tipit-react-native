@@ -1,37 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import ThemeToggle from './ThemeToggle.js';
-
-let tipLowContext = React.createContext('18');
-export const tipLowContextProvider = tipLowContext.Provider
-export const tipLowContextConsumer = tipLowContext.Consumer
-
-
-export let tipHighContext = React.createContext('25');
+import UserContext from './UserContext';
 
 export default class Settings extends React.Component {
-    updateTipLowContext = (text) => {
-        tipLowContext = React.createContext(text)
-    }
+    static contextType = UserContext
+    render () {
 
-    updateTipHighContext = (text) => {
-        tipHighContext = React.createContext(text)
-    }
-
-    render (){
         return (
             <View>
                 <Text style={styles.normalText}>Settings</Text>                          
                 <View>
                     <Text style={styles.label}>Low tip default</Text>
                     <TextInput style={styles.input}
-                        onChangeText={this.updateTipLowContext}
+                        defaultValue={this.context.defaultTipLow}                    
                     />
                 </View>
                 <View>
                     <Text style={styles.label}>High tip default</Text>
                     <TextInput style={styles.input}
-                        onChangeText={this.updateTipHighContext}
+                        defaultValue={this.context.defaultTipHigh} 
                     />
                 </View>
                 <View>
@@ -43,6 +31,7 @@ export default class Settings extends React.Component {
     }
 }
 
+
 const styles = StyleSheet.create({
     label: {
       fontFamily: 'JetBrainsMono-Regular', 
@@ -52,10 +41,11 @@ const styles = StyleSheet.create({
       alignSelf:'flex-start'
     },
     normalText: {
-      fontFamily: 'JetBrainsMono-Regular', 
+      fontFamily: 'JetBrainsMono-Bold', 
       fontSize: 12,
       lineHeight: 20,
       marginTop: 10,
+      textAlign: 'center'
     },
     input: {
       borderColor: '#000000',
@@ -80,3 +70,4 @@ const styles = StyleSheet.create({
         marginTop: -40 
     },
   });
+

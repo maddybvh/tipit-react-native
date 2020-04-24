@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import Results from './Results';
-import { tipLowContext } from './Settings'
 import UserContext from './UserContext'
 
 let resultID = 0;
@@ -84,13 +83,6 @@ function Result (id, bill, tip, total) {
 export default class Caculator extends React.Component {
   static contextType = UserContext  
   
-  componentDidMount() {
-    const userSettings = this.context
-
-    this.setState({defaultTipLow: userSettings.defaultTipLow})
-    this.setState({defaultTipHigh: userSettings.defaultTipHigh})
-  }
-
   state = {
         bill: '',
         results: [],
@@ -147,7 +139,7 @@ export default class Caculator extends React.Component {
                 <Text style={styles.label}>Your Bill:</Text>
                 <Text style={styles.helper}>Pre-tip amount</Text>
                 <TextInput style={styles.input}
-                onChangeText={this.handleBill}
+                  onChangeText={this.handleBill}
                 />
                 </View>
                 <View>
@@ -155,12 +147,12 @@ export default class Caculator extends React.Component {
                     <Text style={styles.helper}>Low to high</Text>
                     <View style={styles.inputGroup}>
                         <TextInput style={styles.input}
-                            defaultValue={this.state.defaultTipLow}
+                            defaultValue={this.context.defaultTipLow}
                             onChangeText={this.handleTipLow}
                         />
                         <Text style={styles.normalText, {margin:7}}>to</Text>
                         <TextInput style={styles.input}
-                            defaultValue={this.state.defaultTipHigh}
+                            defaultValue={this.context.defaultTipHigh}
                             onChangeText={this.handleTipHigh}
                         />                
                     </View>
