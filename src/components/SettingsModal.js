@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking} from 'react-native';
 import { Title } from './Title';
+import Settings from './Settings.js';
 
-
-
-class InfoModal extends Component {
+class SettingsModal extends Component {
    state = {
       modalVisible: false,
    }
@@ -19,52 +18,41 @@ class InfoModal extends Component {
                onRequestClose = {() => { console.log("Modal has been closed.") } }>
                
                 <View style = {styles.modal}>
+                    <Title />
                     <TouchableHighlight onPress = {() => {
                         this.toggleModal(!this.state.modalVisible)}}> 
-                        <Text style = {styles.normalText}>x</Text>
+                        <Text style = {styles.text}>x</Text>
                     </TouchableHighlight>
-                    <Title />
-                    <Text style = {styles.normalText}>What is this app?</Text>
-                    <Text style = {styles.normalText}>A means to enhance palindromic whimsy.</Text>
-                    <View>
-                        <Text style = {styles.normalText}>(c) Savas Labs 2020</Text>
-                        <Image 
-                        source={require('../../assets/ava-blue.png')}
-                        style={{margin:15, alignSelf: 'center'}} />
-                        <Text style = {styles.normalText} onPress={ ()=> Linking.openURL('https:savaslabs.com') }>Learn more about our #labs initiative.</Text>
-                        <Image 
-                        source={require('../../assets/labs.png')}
-                        style={{margin:15, alignSelf: 'center'}} />
-                        <Image 
+                    <Image 
                         source={require('../../assets/dashes.png')}
                         style={{margin:15, alignSelf: 'center'}} />
-                    </View>
-                  
+                    <Settings />
+                    <Image 
+                        source={require('../../assets/dashes.png')}
+                        style={{margin:15, alignSelf: 'center'}} />
+                </View>
 
-               </View>
             </Modal>
             <TouchableHighlight onPress = {() => {this.toggleModal(true)}}>
-               <Text style = {styles.text}>i</Text>
+                <Image 
+                    source={require('../../assets/settings.png')} />
             </TouchableHighlight>
          </View>
       )
    }
 }
-export default InfoModal
+export default SettingsModal
 
 const styles = StyleSheet.create ({
     container: {
-       padding: 10
+       padding: 10,
     },
     modal: {
-       alignItems: 'center',
-       padding: 100
+       padding: 10,
+       marginTop: 60,
     },
-    normalText: {
-      fontFamily: 'JetBrainsMono-Bold', 
-      fontSize: 14,
-      lineHeight: 16,
-      marginTop: 10,
-      textAlign: 'center'
-    },
+    text: {
+       color: '#3f2949',
+       marginTop: 10
+    }
  })

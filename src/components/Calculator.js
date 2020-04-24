@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import Results from './Results';
+import UserContext from './UserContext'
 
 let resultID = 0;
 
@@ -80,13 +81,18 @@ function Result (id, bill, tip, total) {
 
 
 export default class Caculator extends React.Component {
-    state = {
+  static contextType = UserContext
+  
+  componentDidMount() {
+    this.setState({tipLow: this.context.defaultTipLow, tipHigh: this.context.defaultTipHigh})
+  }
+  
+  state = {
         bill: '',
-        tipLow: '18',
-        tipHigh: '25',
         results: [],
         message: ''
-      }
+  }
+  
     handleBill = (text) => {
     this.setState({bill: parseFloat(text)}, function(){
         this.findResults()
@@ -137,7 +143,7 @@ export default class Caculator extends React.Component {
                 <Text style={styles.label}>Your Bill:</Text>
                 <Text style={styles.helper}>Pre-tip amount</Text>
                 <TextInput style={styles.input}
-                onChangeText={this.handleBill}
+                  onChangeText={this.handleBill}
                 />
                 </View>
                 <View>
@@ -145,12 +151,12 @@ export default class Caculator extends React.Component {
                     <Text style={styles.helper}>Low to high</Text>
                     <View style={styles.inputGroup}>
                         <TextInput style={styles.input}
-                            defaultValue='18'
+                            defaultValue={this.context.defaultTipLow}
                             onChangeText={this.handleTipLow}
                         />
                         <Text style={styles.normalText, {margin:7}}>to</Text>
                         <TextInput style={styles.input}
-                            defaultValue='25'
+                            defaultValue={this.context.defaultTipHigh}
                             onChangeText={this.handleTipHigh}
                         />                
                     </View>
@@ -199,12 +205,6 @@ const styles = StyleSheet.create({
         lineHeight: 14,
         color: '#FF0000',
         textAlign: 'right'
-    },
-    dashes: {
-      fontFamily: 'JetBrainsMono-Regular',
-      fontSize: 12,
-      lineHeight: 14,
-      textAlign: 'center',
     },
     input: {
       borderColor: '#000000',
