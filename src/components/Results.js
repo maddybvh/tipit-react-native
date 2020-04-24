@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginTop: Constants.statusBarHeight,
-  },
+    },
     item: {
         padding: 10,
         marginVertical: 8,
