@@ -5,21 +5,31 @@ import UserContext from './UserContext';
 
 export default class Settings extends React.Component {
     static contextType = UserContext
-    render () {
 
+    handleTipLow = (text) => {
+
+        }
+
+    handleTipHigh = (text) => {
+
+    }
+
+    render () {
         return (
             <View>
                 <Text style={styles.normalText}>Settings</Text>                          
                 <View>
                     <Text style={styles.label}>Low tip default</Text>
                     <TextInput style={styles.input}
-                        defaultValue={this.context.defaultTipLow}                    
+                        defaultValue={this.context.defaultTipLow}
+                        onChangeText={this.handleTipLow}                    
                     />
                 </View>
                 <View>
                     <Text style={styles.label}>High tip default</Text>
                     <TextInput style={styles.input}
-                        defaultValue={this.context.defaultTipHigh} 
+                        defaultValue={this.context.defaultTipHigh}
+                        onChangeText={this.handleTipHigh} 
                     />
                 </View>
                 <View>

@@ -81,7 +81,11 @@ function Result (id, bill, tip, total) {
 
 
 export default class Caculator extends React.Component {
-  static contextType = UserContext  
+  static contextType = UserContext
+  
+  componentDidMount() {
+    this.setState({tipLow: this.context.defaultTipLow, tipHigh: this.context.defaultTipHigh})
+  }
   
   state = {
         bill: '',
