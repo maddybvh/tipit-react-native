@@ -21,17 +21,17 @@ class InfoModal extends Component {
                 <View style = {styles.modal}>
                     <TouchableHighlight onPress = {() => {
                         this.toggleModal(!this.state.modalVisible)}}> 
-                        <Text style = {styles.text}>x</Text>
+                        <Text style = {styles.normalText}>x</Text>
                     </TouchableHighlight>
                     <Title />
-                    <Text>What is this app?</Text>
-                    <Text>A means to enhance palindromic whimsy.</Text>
+                    <Text style = {styles.normalText}>What is this app?</Text>
+                    <Text style = {styles.normalText}>A means to enhance palindromic whimsy.</Text>
                     <View>
-                        <Text>(c) Savas Labs 2020</Text>
+                        <Text style = {styles.normalText}>(c) Savas Labs 2020</Text>
                         <Image 
                         source={require('../../assets/ava-blue.png')}
                         style={{margin:15, alignSelf: 'center'}} />
-                        <Text onPress={ ()=> Linking.openURL('https:savaslabs.com') }>Learn more about our #labs initiative.</Text>
+                        <Text style = {styles.normalText} onPress={ ()=> Linking.openURL('https:savaslabs.com') }>Learn more about our #labs initiative.</Text>
                         <Image 
                         source={require('../../assets/labs.png')}
                         style={{margin:15, alignSelf: 'center'}} />
@@ -60,8 +60,11 @@ const styles = StyleSheet.create ({
        alignItems: 'center',
        padding: 100
     },
-    text: {
-       color: '#3f2949',
-       marginTop: 10
-    }
+    normalText: {
+      fontFamily: 'JetBrainsMono-Bold', 
+      fontSize: 14,
+      lineHeight: 16,
+      marginTop: 10,
+      textAlign: 'center'
+    },
  })
