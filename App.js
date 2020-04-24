@@ -4,6 +4,7 @@ import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { Header } from './src/components/Header';
 import Calculator from './src/components/Calculator';
+import { UserProvider } from './src/components/UserContext'
 
 
 
@@ -14,15 +15,19 @@ export default function App () {
     'JetBrainsMono-Italic': require('./assets/fonts/JetBrainsMono-Italic.ttf'),
   });
 
+  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'light'}
+
   if (!fontsLoaded) {
     return <AppLoading />;
   }
   else {
     return (
-      <View style={styles.container}>
-        <Header />
-        <Calculator />
-      </View>
+      <UserProvider value={userSettings}>
+        <View style={styles.container}>
+          <Header />
+          <Calculator />
+        </View>
+      </UserProvider>
     )
   }
 }

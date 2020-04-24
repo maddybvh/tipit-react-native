@@ -3,8 +3,6 @@ import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking} from
 import { Title } from './Title';
 import Settings from './Settings.js';
 
-
-
 class SettingsModal extends Component {
    state = {
       modalVisible: false,
@@ -29,6 +27,9 @@ class SettingsModal extends Component {
                         source={require('../../assets/dashes.png')}
                         style={{margin:15, alignSelf: 'center'}} />
                     <Settings />
+                    <Image 
+                        source={require('../../assets/dashes.png')}
+                        style={{margin:15, alignSelf: 'center'}} />
                 </View>
 
             </Modal>

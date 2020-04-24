@@ -2,7 +2,22 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import ThemeToggle from './ThemeToggle.js';
 
+let tipLowContext = React.createContext('18');
+export const tipLowContextProvider = tipLowContext.Provider
+export const tipLowContextConsumer = tipLowContext.Consumer
+
+
+export let tipHighContext = React.createContext('25');
+
 export default class Settings extends React.Component {
+    updateTipLowContext = (text) => {
+        tipLowContext = React.createContext(text)
+    }
+
+    updateTipHighContext = (text) => {
+        tipHighContext = React.createContext(text)
+    }
+
     render (){
         return (
             <View>
@@ -10,11 +25,13 @@ export default class Settings extends React.Component {
                 <View>
                     <Text style={styles.label}>Low tip default</Text>
                     <TextInput style={styles.input}
+                        onChangeText={this.updateTipLowContext}
                     />
                 </View>
                 <View>
                     <Text style={styles.label}>High tip default</Text>
                     <TextInput style={styles.input}
+                        onChangeText={this.updateTipHighContext}
                     />
                 </View>
                 <View>
