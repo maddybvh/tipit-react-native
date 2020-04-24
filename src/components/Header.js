@@ -5,13 +5,22 @@ import SettingsModal from './SettingsModal';
 import { Title } from './Title';
 
 export const Header = (props) => (
-    <View>
+  <View>
+    <View style={styles.container}>
       <InfoModal />
       <Title /> 
       <SettingsModal />
-      <Image 
+    </View>
+    <Image 
       source={require('../../assets/dashes.png')}
       style={{margin:15, alignSelf: 'center'}} />
-    </View>
+  </View>
 )
+
+const styles = {
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  }
+}
 
