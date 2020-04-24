@@ -1,17 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import InfoModal from './InfoModal';
+import { Title } from './Title';
 
 export const Header = (props) => (
     <View>
-        <Text style={styles.title}>tipit</Text> 
+      <InfoModal />
+      <Title /> 
     </View>
 )
 
-const styles = StyleSheet.create({
-    title:{
-      fontFamily: 'JetBrainsMono-Bold',
-      fontSize: 24,
-      textAlign: 'center',
-      lineHeight: 27,
-    }
-  });

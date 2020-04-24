@@ -133,9 +133,6 @@ export default class Caculator extends React.Component {
     render (){
         return (
             <View>                          
-                <Image 
-                    source={require('../../assets/dashes.png')}
-                    style={{margin:15, alignSelf: 'center'}} />
                 <View>
                 <Text style={styles.label}>Your Bill:</Text>
                 <Text style={styles.helper}>Pre-tip amount</Text>
