@@ -21,11 +21,16 @@ class SettingsModal extends Component {
                onRequestClose = {() => { console.log("Modal has been closed.") } }>
                
                 <View style = {styles.modal}>
-                    <Title />
-                    <TouchableHighlight onPress = {() => {
-                        this.toggleModal(!this.state.modalVisible)}}> 
-                        <Text style = {styles.text}>x</Text>
-                    </TouchableHighlight>
+                   <View style= {{flexDirection: 'row', justifyContent: 'space-between'}}>
+                     <View style={{flex: 1}}></View>
+                     <Title style={{flex: 1}}/>
+                     <TouchableHighlight style={{padding: 5, flex: 1}} onPress = {() => {
+                           this.toggleModal(!this.state.modalVisible)}}> 
+                           <Text style = {styles.clear}>X</Text>
+                     </TouchableHighlight>
+
+                   </View>
+
                     <Image 
                         source={require('../../assets/dashes.png')}
                         style={{margin:15, alignSelf: 'center'}} />
@@ -52,14 +57,23 @@ const styles = StyleSheet.create ({
        backgroundColor: colors.background,
     },
     modal: {
-       padding: 10,
-       paddingTop: 60,
-       backgroundColor: colors.background,
-       flex: 1,
+      flex: 1,
+      paddingTop: 60,
+      padding: 35,
+      display: 'flex',
+      backgroundColor: colors.background,
     },
     text: {
        color: '#3f2949',
        marginTop: 10,
        color: colors.text,
-    }
+    },
+    clear: {
+      color: colors.clear,
+      fontFamily: 'JetBrainsMono-Bold',
+      textAlign: 'right',
+      padding: 10,
+      fontSize: 18,
+   },
+
  })

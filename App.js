@@ -7,10 +7,10 @@ import Calculator from './src/components/Calculator';
 import { UserProvider } from './src/components/UserContext';
 import { useTheme } from './src/theme/hooks';
 
-
+const { colors } = useTheme()
 
 export default function App () {
-  const { colors } = useTheme()
+  
   console.log(colors.background)
   let [fontsLoaded] = useFonts({
     'JetBrainsMono-Regular': require('./assets/fonts/JetBrainsMono-Regular.ttf'),
@@ -26,7 +26,7 @@ export default function App () {
   else {
     return (
       <UserProvider value={userSettings}>
-        <View style={[styles.container, {backgroundColor: colors.background}]}>
+        <View style={styles.container}>
           <Header />
           <Calculator />
         </View>
@@ -41,5 +41,6 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     padding: 35,
     display: 'flex',
+    backgroundColor: colors.background
   }
 });
