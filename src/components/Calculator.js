@@ -164,18 +164,21 @@ export default class Caculator extends React.Component {
                     </View>
                     {/* If there are results, print the message and clear button. */}
                     {this.state.results.length > 0 &&
-                        <View>
-                            <Text style={styles.normalText}>{this.state.message}</Text>
-                            <TouchableOpacity onPress={this.clearTable}>
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                            <Text style={[styles.normalText, {flex: 3}]}>{this.state.message}</Text>
+                            <TouchableOpacity onPress={this.clearTable} style={{flex: 1, justifyContent: 'flex-start'}}>
                                 <Text style={styles.clearButton}>X Clear</Text>
                             </TouchableOpacity>
                         </View>
                         }
-                    <Image 
-                        source={require('../../assets/dashes.png')}
-                        style={{margin:15, alignSelf: 'center'}} />
                 </View>
-                <Results results={this.state.results}/>                            
+                <View style={{position: 'absolute', marginTop: 180}}>
+                  <Image 
+                    source={require('../../assets/dashes.png')}
+                    style={{margin:15, alignSelf: 'center'}} />
+                  <Results results={this.state.results}/>
+                </View>
+                                            
             </View>
             );
         }
@@ -211,6 +214,7 @@ const styles = StyleSheet.create({
         color: '#FF0000',
         textAlign: 'right',
         color: colors.clear,
+        padding: 12,
     },
     input: {
       borderColor: colors.text,

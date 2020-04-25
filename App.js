@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 60,
-    padding: 20,
+    padding: 35,
     display: 'flex',
   }
 });
