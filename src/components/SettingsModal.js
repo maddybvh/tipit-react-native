@@ -36,7 +36,7 @@ class SettingsModal extends Component {
                 </View>
 
             </Modal>
-            <TouchableHighlight onPress = {() => {this.toggleModal(true)}}>
+            <TouchableHighlight style={{padding: 5}} onPress = {() => {this.toggleModal(true)}}>
                 <Image 
                     source={require('../../assets/settings.png')} />
             </TouchableHighlight>

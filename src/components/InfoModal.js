@@ -47,9 +47,11 @@ class InfoModal extends Component {
 
                </View>
             </Modal>
-            <TouchableHighlight onPress = {() => {this.toggleModal(true)}}>
-               <Text style = {styles.normalText}>i</Text>
-            </TouchableHighlight>
+            <TouchableHighlight style={{padding: 5}} onPress = {() => {this.toggleModal(true)}}>
+               <Image 
+                  source={require('../../assets/info.png')}
+                  />
+               </TouchableHighlight>
          </View>
       )
    }
