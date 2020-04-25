@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking} from 'react-native';
 import { Title } from './Title';
 import Settings from './Settings.js';
+import { useTheme } from '../theme/hooks';
+
+const { colors } = useTheme()
 
 class SettingsModal extends Component {
    state = {
@@ -46,13 +49,17 @@ export default SettingsModal
 const styles = StyleSheet.create ({
     container: {
        padding: 10,
+       backgroundColor: colors.background,
     },
     modal: {
        padding: 10,
-       marginTop: 60,
+       paddingTop: 60,
+       backgroundColor: colors.background,
+       flex: 1,
     },
     text: {
        color: '#3f2949',
-       marginTop: 10
+       marginTop: 10,
+       color: colors.text,
     }
  })

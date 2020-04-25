@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import Results from './Results';
-import UserContext from './UserContext'
+import UserContext from './UserContext';
+import { useTheme } from '../theme/hooks';
 
 let resultID = 0;
+const { colors } = useTheme()
 
 //Determine if a string is a palindrome
 function palindrome(str) {
@@ -154,7 +156,7 @@ export default class Caculator extends React.Component {
                             defaultValue={this.context.defaultTipLow}
                             onChangeText={this.handleTipLow}
                         />
-                        <Text style={styles.normalText, {margin:7}}>to</Text>
+                        <Text style={[styles.normalText, {margin:7}]}>to</Text>
                         <TextInput style={styles.input}
                             defaultValue={this.context.defaultTipHigh}
                             onChangeText={this.handleTipHigh}
@@ -187,27 +189,31 @@ const styles = StyleSheet.create({
       fontSize: 18,
       lineHeight: 24,
       marginTop: 20,
+      color: colors.text,
     },
     helper: {
       fontFamily: 'JetBrainsMono-Italic', 
       fontSize: 10,
       lineHeight: 14,
+      color: colors.text,
     },
     normalText: {
       fontFamily: 'JetBrainsMono-Regular', 
       fontSize: 12,
       lineHeight: 20,
       marginTop: 10,
+      color: colors.text,
     },
     clearButton: {
         fontFamily: 'JetBrainsMono-Regular',
         fontSize: 12,
         lineHeight: 14,
         color: '#FF0000',
-        textAlign: 'right'
+        textAlign: 'right',
+        color: colors.clear,
     },
     input: {
-      borderColor: '#000000',
+      borderColor: colors.text,
       borderWidth: 1,
       borderRadius: 3,
       height: 43,
@@ -219,7 +225,8 @@ const styles = StyleSheet.create({
       textAlign: 'right',
       marginRight: 10,
       alignSelf: 'flex-end',
-      marginTop: -40   
+      marginTop: -40,
+      color: colors.text,  
     },
     inputGroup: {
       flexDirection: "row",

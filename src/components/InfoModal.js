@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking} from 'react-native';
 import { Title } from './Title';
+import { useTheme } from '../theme/hooks';
 
-
+const { colors } = useTheme()
 
 class InfoModal extends Component {
    state = {
@@ -31,7 +32,10 @@ class InfoModal extends Component {
                         <Image 
                         source={require('../../assets/ava-blue.png')}
                         style={{margin:15, alignSelf: 'center'}} />
-                        <Text style = {styles.normalText} onPress={ ()=> Linking.openURL('https:savaslabs.com') }>Learn more about our #labs initiative.</Text>
+                        <Text style = {[styles.normalText, {color: colors.link, textDecorationLine: 'underline'}]}
+                           onPress={ ()=> Linking.openURL('https:savaslabs.com') }>
+                              Learn more about our #labs initiative.
+                        </Text>
                         <Image 
                         source={require('../../assets/labs.png')}
                         style={{margin:15, alignSelf: 'center'}} />
@@ -44,7 +48,7 @@ class InfoModal extends Component {
                </View>
             </Modal>
             <TouchableHighlight onPress = {() => {this.toggleModal(true)}}>
-               <Text style = {styles.text}>i</Text>
+               <Text style = {styles.normalText}>i</Text>
             </TouchableHighlight>
          </View>
       )
@@ -54,17 +58,20 @@ export default InfoModal
 
 const styles = StyleSheet.create ({
     container: {
-       padding: 10
+       padding: 10,
+       backgroundColor: colors.background,
     },
     modal: {
        alignItems: 'center',
-       padding: 100
+       padding: 100,
+       backgroundColor: colors.background,
     },
     normalText: {
       fontFamily: 'JetBrainsMono-Bold', 
       fontSize: 14,
       lineHeight: 16,
       marginTop: 10,
-      textAlign: 'center'
+      textAlign: 'center',
+      color: colors.text,
     },
  })

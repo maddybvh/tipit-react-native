@@ -2,6 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import ThemeToggle from './ThemeToggle.js';
 import UserContext from './UserContext';
+import { useTheme } from '../theme/hooks';
+
+const { colors } = useTheme()
 
 export default class Settings extends React.Component {
     static contextType = UserContext
@@ -48,17 +51,19 @@ const styles = StyleSheet.create({
       fontSize: 18,
       lineHeight: 24,
       marginTop: 20,
-      alignSelf:'flex-start'
+      alignSelf:'flex-start',
+      color: colors.text,
     },
     normalText: {
       fontFamily: 'JetBrainsMono-Bold', 
       fontSize: 14,
       lineHeight: 16,
       marginTop: 10,
-      textAlign: 'center'
+      textAlign: 'center',
+      color: colors.text,
     },
     input: {
-      borderColor: '#000000',
+      borderColor: colors.text,
       borderWidth: 1,
       borderRadius: 3,
       height: 43,
@@ -70,7 +75,8 @@ const styles = StyleSheet.create({
       textAlign: 'right',
       marginRight: 10,
       alignSelf: 'flex-end',
-      marginTop: -40   
+      marginTop: -40,
+      color: colors.text,   
     },
     toggleContainer: {
         padding: 5,

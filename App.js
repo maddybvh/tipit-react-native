@@ -4,11 +4,14 @@ import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { Header } from './src/components/Header';
 import Calculator from './src/components/Calculator';
-import { UserProvider } from './src/components/UserContext'
+import { UserProvider } from './src/components/UserContext';
+import { useTheme } from './src/theme/hooks';
 
 
 
 export default function App () {
+  const { colors } = useTheme()
+  console.log(colors.background)
   let [fontsLoaded] = useFonts({
     'JetBrainsMono-Regular': require('./assets/fonts/JetBrainsMono-Regular.ttf'),
     'JetBrainsMono-Bold': require('./assets/fonts/JetBrainsMono-Bold.ttf'),
@@ -23,7 +26,7 @@ export default function App () {
   else {
     return (
       <UserProvider value={userSettings}>
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: colors.background}]}>
           <Header />
           <Calculator />
         </View>
@@ -34,8 +37,9 @@ export default function App () {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 60,
-    margin: 20,
+    flex: 1,
+    paddingTop: 60,
+    padding: 20,
     display: 'flex',
   }
 });
