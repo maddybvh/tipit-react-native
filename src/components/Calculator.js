@@ -99,17 +99,17 @@ export default class Caculator extends React.Component {
   }
   
     handleBill = (text) => {
-    this.setState({bill: parseFloat(text)}, function(){
+    this.setState({bill: text}, function(){
         this.findResults()
     })
     }
     handleTipLow = (text) => {
-    this.setState({tipLow: parseFloat(text)}, function(){
+    this.setState({tipLow: text}, function(){
         this.findResults()
     })
     }
     handleTipHigh = (text) => {
-    this.setState({tipHigh: parseFloat(text)}, function(){
+    this.setState({tipHigh: text}, function(){
         this.findResults()
     })
     }
@@ -125,9 +125,9 @@ export default class Caculator extends React.Component {
     findResults(){
         this.clearTable();
     if (this.state.bill && this.state.tipLow && this. state.tipHigh && (this.state.tipLow <= this.state.tipHigh)){
-        const bill = this.state.bill;
-        const tipLow = this.state.tipLow;
-        const tipHigh = this.state.tipHigh;
+        const bill = parseFloat(this.state.bill);
+        const tipLow = parseFloat(this.state.tipLow);
+        const tipHigh = parseFloat(this.state.tipHigh);
 
         const tipArray = findPalTips(bill, tipLow, tipHigh);
         const allTotalArray = arrayTipsAndTotals(bill, tipArray);
