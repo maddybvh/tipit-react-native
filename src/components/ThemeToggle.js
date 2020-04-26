@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Switch, StyleSheet } from "react-native";
+import { View, Switch } from "react-native";
 
 export default function ThemeToggle() {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -16,4 +16,3 @@ export default function ThemeToggle() {
 
   );
 }
-
