@@ -10,14 +10,6 @@ const { colors } = useTheme()
 export default class Settings extends React.Component {
     static contextType = UserContext
 
-    handleTipLow = (text) => {
-
-        }
-
-    handleTipHigh = (text) => {
-
-    }
-
     render () {
         return (
             <View>
@@ -26,14 +18,14 @@ export default class Settings extends React.Component {
                     <Text style={styles.label}>Low tip default:</Text>
                     <PercentInput 
                         defaultValue={this.context.defaultTipLow}
-                        onChange={this.handleTipLow}                    
+                        onChange={this.context.updateDefaultTipLow}                    
                     />
                 </View>
                 <View style={styles.inputRow}>
                     <Text style={styles.label}>High tip default:</Text>
                     <PercentInput 
                         defaultValue={this.context.defaultTipHigh}
-                        onChange={this.handleTipHigh} 
+                        onChange={this.context.updateDefaultTipHigh} 
                     />
                 </View>
                 <View style={styles.inputRow}>
