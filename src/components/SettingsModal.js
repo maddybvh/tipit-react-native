@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking} from 'react-native';
+import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking, TouchableOpacity} from 'react-native';
 import { Title } from './Title';
 import { Footer } from './Footer';
 import { Dashes } from './Dashes';
@@ -26,10 +26,10 @@ class SettingsModal extends Component {
                    <View style= {{flexDirection: 'row', justifyContent: 'space-between'}}>
                      <View style={{flex: 1}}></View>
                      <Title style={{flex: 1}}/>
-                     <TouchableHighlight style={{padding: 5, flex: 1}} onPress = {() => {
+                     <TouchableOpacity style={{padding: 5, flex: 1}} onPress = {() => {
                            this.toggleModal(!this.state.modalVisible)}}> 
                            <Text style = {styles.clear}>X</Text>
-                     </TouchableHighlight>
+                     </TouchableOpacity>
 
                    </View>
 
@@ -39,10 +39,10 @@ class SettingsModal extends Component {
                 </View>
 
             </Modal>
-            <TouchableHighlight style={{padding: 5}} onPress = {() => {this.toggleModal(true)}}>
+            <TouchableOpacity style={{padding: 5}} onPress = {() => {this.toggleModal(true)}}>
                 <Image 
                     source={require('../../assets/settings.png')} />
-            </TouchableHighlight>
+            </TouchableOpacity>
          </View>
       )
    }

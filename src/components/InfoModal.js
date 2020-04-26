@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking} from 'react-native';
+import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking, TouchableOpacity} from 'react-native';
 import { Title } from './Title';
 import { Footer } from './Footer';
 import { Dashes } from './Dashes';
@@ -23,10 +23,10 @@ class InfoModal extends Component {
                
                 <View style = {styles.modal}>
                    <View style={{alignSelf: 'flex-start', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
-                     <TouchableHighlight style={{padding: 5, flex: 1}} onPress = {() => {
+                     <TouchableOpacity style={{padding: 5, flex: 1}} onPress = {() => {
                            this.toggleModal(!this.state.modalVisible)}}> 
                            <Text style = {styles.clear}>X</Text>
-                     </TouchableHighlight>
+                     </TouchableOpacity>
                         <Title style = {{flex: 1}}/>
                      <View style = {{flex: 1}}></View>
                    </View>
@@ -53,11 +53,11 @@ class InfoModal extends Component {
                     <Footer />
                </View>
             </Modal>
-            <TouchableHighlight style={{padding: 5}} onPress = {() => {this.toggleModal(true)}}>
+            <TouchableOpacity style={{padding: 5}} onPress = {() => {this.toggleModal(true)}}>
                <Image 
                   source={require('../../assets/info.png')}
                   />
-               </TouchableHighlight>
+               </TouchableOpacity>
          </View>
       )
    }
