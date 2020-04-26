@@ -4,6 +4,7 @@ import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { Header } from './src/components/Header';
 import Calculator from './src/components/Calculator';
+import { Footer } from './src/components/Footer';
 import { UserProvider } from './src/components/UserContext';
 import { useTheme } from './src/theme/hooks';
 
@@ -29,6 +30,7 @@ export default function App () {
         <View style={styles.container}>
           <Header />
           <Calculator />
+          <Footer />
         </View>
       </UserProvider>
     )

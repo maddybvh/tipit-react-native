@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking} from 'react-native';
 import { Title } from './Title';
+import { Footer } from './Footer';
 import { Dashes } from './Dashes';
 import { useTheme } from '../theme/hooks';
 
@@ -33,7 +34,7 @@ class InfoModal extends Component {
 
                     <Text style = {[styles.normalText, {fontFamily: 'JetBrainsMono-Bold'}]}>What is this app?</Text>
                     <Text style = {styles.description}>A means to enhance palindromic whimsy.</Text>
-                    <View style={{flex: 1, justifyContent: 'flex-end'}}>
+                    <View style={{flex: 2, justifyContent: 'flex-end', marginBottom: 30}}>
                        <View style={{flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
                         <Text style = {[styles.normalText, {textAlign: 'left'}]}>(c) Savas Labs 2020</Text>
                            <Image 
@@ -49,6 +50,7 @@ class InfoModal extends Component {
                            style={{marginTop: 10}}/>
                        </View>
                     </View>
+                    <Footer />
                </View>
             </Modal>
             <TouchableHighlight style={{padding: 5}} onPress = {() => {this.toggleModal(true)}}>

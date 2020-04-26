@@ -190,7 +190,7 @@ export default class Caculator extends React.Component {
                 <View >
                   <Dashes />
                   <Results results={this.state.results}/>
-                </View>                     
+                </View>               
             </View>
             );
         }
