@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import { CurrencyInput } from './CurrencyInput';
 import { PercentInput } from './PercentInput';
+import { Dashes } from './Dashes';
 import Results from './Results';
 import UserContext from './UserContext';
 import { useTheme } from '../theme/hooks';
@@ -187,9 +188,7 @@ export default class Caculator extends React.Component {
                         }
                 </View>
                 <View >
-                  <Image 
-                    source={require('../../assets/dashes.png')}
-                    style={{marginVertical: 15, alignSelf: 'center'}} />
+                  <Dashes />
                   <Results results={this.state.results}/>
                 </View>
                                             

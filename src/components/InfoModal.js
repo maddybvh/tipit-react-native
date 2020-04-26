@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking} from 'react-native';
 import { Title } from './Title';
+import { Dashes } from './Dashes';
 import { useTheme } from '../theme/hooks';
 
 const { colors } = useTheme()
@@ -28,9 +29,7 @@ class InfoModal extends Component {
                         <Title style = {{flex: 1}}/>
                      <View style = {{flex: 1}}></View>
                    </View>
-                   <Image 
-                        source={require('../../assets/dashes.png')}
-                        style={{margin:15, alignSelf: 'flex-start'}} />
+                   <Dashes />
 
                     <Text style = {[styles.normalText, {fontFamily: 'JetBrainsMono-Bold'}]}>What is this app?</Text>
                     <Text style = {styles.description}>A means to enhance palindromic whimsy.</Text>

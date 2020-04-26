@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import InfoModal from './InfoModal';
 import SettingsModal from './SettingsModal';
 import { Title } from './Title';
+import { Dashes } from './Dashes';
 
 export const Header = (props) => (
   <View>
@@ -11,9 +12,7 @@ export const Header = (props) => (
       <Title /> 
       <SettingsModal />
     </View>
-    <Image 
-      source={require('../../assets/dashes.png')}
-      style={{marginTop: 15, marginBottom: 15, alignSelf: 'center'}} />
+    <Dashes />
   </View>
 )
 

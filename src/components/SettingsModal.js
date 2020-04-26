@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking} from 'react-native';
 import { Title } from './Title';
+import { Dashes } from './Dashes';
 import Settings from './Settings.js';
 import { useTheme } from '../theme/hooks';
 
@@ -31,13 +32,9 @@ class SettingsModal extends Component {
 
                    </View>
 
-                    <Image 
-                        source={require('../../assets/dashes.png')}
-                        style={{margin:15, alignSelf: 'center'}} />
+                    <Dashes />
                     <Settings />
-                    <Image 
-                        source={require('../../assets/dashes.png')}
-                        style={{marginTop:15, marginBottom: 15, alignSelf: 'center'}} />
+                    <Dashes />
                 </View>
 
             </Modal>
