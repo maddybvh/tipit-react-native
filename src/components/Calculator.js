@@ -116,6 +116,10 @@ export default class Caculator extends React.Component {
         this.setState({results: []});
         this.setState({message: ''});
     }
+    clearAll = () => {
+      this.clearTable();
+      this.setState({bill: ''})
+    }
     //Update the state based on the functions above
     findResults(){
         this.clearTable();
@@ -176,7 +180,7 @@ export default class Caculator extends React.Component {
                     {this.state.results.length > 0 &&
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Text style={[styles.normalText, {flex: 3}]}>{this.state.message}</Text>
-                            <TouchableOpacity onPress={this.clearTable} style={{flex: 1, justifyContent: 'flex-start'}}>
+                            <TouchableOpacity onPress={this.clearAll} style={{flex: 1, justifyContent: 'flex-start'}}>
                                 <Text style={styles.clearButton}>X Clear</Text>
                             </TouchableOpacity>
                         </View>
