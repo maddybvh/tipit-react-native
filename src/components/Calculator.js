@@ -175,7 +175,7 @@ export default class Caculator extends React.Component {
                         />                
                     </View>
                   </View>
-                  <View>
+                  <View style={{minHeight: 50}}>
                     {/* If there are results, print the message and clear button. */}
                     {this.state.results.length > 0 &&
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -186,10 +186,10 @@ export default class Caculator extends React.Component {
                         </View>
                         }
                 </View>
-                <View style={{position: 'absolute', marginTop: 140}}>
+                <View >
                   <Image 
                     source={require('../../assets/dashes.png')}
-                    style={{margin:15, alignSelf: 'center'}} />
+                    style={{marginVertical: 15, alignSelf: 'center'}} />
                   <Results results={this.state.results}/>
                 </View>
                                             
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', 
     justifyContent: 'space-between', 
     alignItems: 'center',
-    marginTop: 10,
+    marginVertical: 12,
   }, 
   label: {
     fontFamily: 'JetBrainsMono-Regular', 
@@ -240,4 +240,4 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     marginTop: -25,
   }
-  });
+});

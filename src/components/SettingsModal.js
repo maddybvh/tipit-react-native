@@ -37,7 +37,7 @@ class SettingsModal extends Component {
                     <Settings />
                     <Image 
                         source={require('../../assets/dashes.png')}
-                        style={{margin:15, alignSelf: 'center'}} />
+                        style={{marginTop:15, marginBottom: 15, alignSelf: 'center'}} />
                 </View>
 
             </Modal>
@@ -59,7 +59,7 @@ const styles = StyleSheet.create ({
     modal: {
       flex: 1,
       paddingTop: 60,
-      padding: 35,
+      padding: 10,
       display: 'flex',
       backgroundColor: colors.background,
     },

@@ -23,21 +23,21 @@ export default class Settings extends React.Component {
             <View>
                 <Text style={styles.normalText}>Settings</Text>                          
                 <View style={styles.inputRow}>
-                    <Text style={styles.label}>Low tip default</Text>
+                    <Text style={styles.label}>Low tip default:</Text>
                     <PercentInput 
                         defaultValue={this.context.defaultTipLow}
                         onChange={this.handleTipLow}                    
                     />
                 </View>
                 <View style={styles.inputRow}>
-                    <Text style={styles.label}>High tip default</Text>
+                    <Text style={styles.label}>High tip default:</Text>
                     <PercentInput 
                         defaultValue={this.context.defaultTipHigh}
                         onChange={this.handleTipHigh} 
                     />
                 </View>
                 <View style={styles.inputRow}>
-                    <Text style={styles.label}>Dark Mode</Text>
+                    <Text style={styles.label}>Dark Mode:</Text>
                     <ThemeToggle />
                 </View>
             </View>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         justifyContent: 'space-between', 
         alignItems: 'center',
-        marginTop: 10,
+        marginVertical: 12,
       },
     label: {
       fontFamily: 'JetBrainsMono-Regular', 
@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
       fontFamily: 'JetBrainsMono-Bold', 
       fontSize: 14,
       lineHeight: 16,
-      marginTop: 10,
       textAlign: 'center',
       color: colors.text,
     },

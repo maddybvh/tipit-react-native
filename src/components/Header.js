@@ -13,7 +13,7 @@ export const Header = (props) => (
     </View>
     <Image 
       source={require('../../assets/dashes.png')}
-      style={{margin:15, alignSelf: 'center'}} />
+      style={{marginTop: 15, marginBottom: 15, alignSelf: 'center'}} />
   </View>
 )
 

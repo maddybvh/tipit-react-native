@@ -6,7 +6,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import Constants from 'expo-constants';
 import { useTheme } from '../theme/hooks';
 
 const { colors } = useTheme()
@@ -32,7 +31,7 @@ export default class Results extends React.Component {
     
     render (){
         return (
-            <FlatList
+            <FlatList 
                 data={this.props.results}
                 renderItem={({ item, index }) => (
                     <Item
@@ -56,10 +55,6 @@ export default class Results extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginTop: Constants.statusBarHeight,
-    },
     item: {
         padding: 10,
         marginVertical: 8,
