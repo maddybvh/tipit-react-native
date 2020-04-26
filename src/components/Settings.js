@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import ThemeToggle from './ThemeToggle.js';
 import UserContext from './UserContext';
+import { PercentInput } from './PercentInput';
 import { useTheme } from '../theme/hooks';
 
 const { colors } = useTheme()
@@ -21,21 +22,21 @@ export default class Settings extends React.Component {
         return (
             <View>
                 <Text style={styles.normalText}>Settings</Text>                          
-                <View>
+                <View style={styles.inputRow}>
                     <Text style={styles.label}>Low tip default</Text>
-                    <TextInput style={styles.input}
+                    <PercentInput 
                         defaultValue={this.context.defaultTipLow}
-                        onChangeText={this.handleTipLow}                    
+                        onChange={this.handleTipLow}                    
                     />
                 </View>
-                <View>
+                <View style={styles.inputRow}>
                     <Text style={styles.label}>High tip default</Text>
-                    <TextInput style={styles.input}
+                    <PercentInput 
                         defaultValue={this.context.defaultTipHigh}
-                        onChangeText={this.handleTipHigh} 
+                        onChange={this.handleTipHigh} 
                     />
                 </View>
-                <View>
+                <View style={styles.inputRow}>
                     <Text style={styles.label}>Dark Mode</Text>
                     <ThemeToggle />
                 </View>
@@ -46,11 +47,16 @@ export default class Settings extends React.Component {
 
 
 const styles = StyleSheet.create({
+    inputRow: {
+        flexDirection: 'row', 
+        justifyContent: 'space-between', 
+        alignItems: 'center',
+        marginTop: 10,
+      },
     label: {
       fontFamily: 'JetBrainsMono-Regular', 
       fontSize: 18,
       lineHeight: 24,
-      marginTop: 20,
       alignSelf:'flex-start',
       color: colors.text,
     },
@@ -62,28 +68,4 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       color: colors.text,
     },
-    input: {
-      borderColor: colors.text,
-      borderWidth: 1,
-      borderRadius: 3,
-      height: 43,
-      minWidth: 60,
-      fontFamily: 'JetBrainsMono-Regular',
-      fontSize: 18,
-      lineHeight: 21,
-      padding: 5,
-      textAlign: 'right',
-      marginRight: 10,
-      alignSelf: 'flex-end',
-      marginTop: -40,
-      color: colors.text,   
-    },
-    toggleContainer: {
-        padding: 5,
-        textAlign: 'right',
-        marginRight: 10,
-        alignSelf: 'flex-end',
-        marginTop: -40 
-    },
   });
-

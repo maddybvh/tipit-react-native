@@ -43,6 +43,5 @@ export const CurrencyInput = ({ value, onChange, ...props}) => (
         color: colors.text,
         flex: 4,
         paddingRight: 5,
-        alignSelf: 'stretch',
     },
   });

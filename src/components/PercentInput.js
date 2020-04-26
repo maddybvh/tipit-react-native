@@ -42,6 +42,5 @@ const styles = StyleSheet.create({
         color: colors.text,
         flex: 2,
         paddingRight: 5,
-        alignSelf: 'stretch',
     },
   });

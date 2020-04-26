@@ -143,7 +143,7 @@ export default class Caculator extends React.Component {
     render (){
         return (
             <View>                          
-                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <View style={styles.inputRow}>
                   <View style={{flex: 1}}>
                     <Text style={styles.label}>Your Bill:</Text>
                     <Text style={styles.helper}>Pre-tip amount</Text>
@@ -154,9 +154,11 @@ export default class Caculator extends React.Component {
                     onChange={this.handleBill}
                   />
                 </View>
-                <View>
-                    <Text style={styles.label}>Tip Range:</Text>
-                    <Text style={styles.helper}>Low to high</Text>
+                <View style={styles.inputRow}>
+                    <View>
+                      <Text style={styles.label}>Tip Range:</Text>
+                      <Text style={styles.helper}>Low to high</Text>
+                    </View>
                     <View style={styles.inputGroup}>
                         <PercentInput
                             defaultValue={this.context.defaultTipLow}
@@ -168,6 +170,8 @@ export default class Caculator extends React.Component {
                             onChange={this.handleTipHigh}
                         />                
                     </View>
+                  </View>
+                  <View>
                     {/* If there are results, print the message and clear button. */}
                     {this.state.results.length > 0 &&
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -178,7 +182,7 @@ export default class Caculator extends React.Component {
                         </View>
                         }
                 </View>
-                <View style={{position: 'absolute', marginTop: 180}}>
+                <View style={{position: 'absolute', marginTop: 140}}>
                   <Image 
                     source={require('../../assets/dashes.png')}
                     style={{margin:15, alignSelf: 'center'}} />
@@ -193,53 +197,59 @@ export default class Caculator extends React.Component {
 
 
 const styles = StyleSheet.create({
-    label: {
-      fontFamily: 'JetBrainsMono-Regular', 
-      fontSize: 18,
-      lineHeight: 24,
-      color: colors.text,
-    },
-    helper: {
-      fontFamily: 'JetBrainsMono-Italic', 
-      fontSize: 10,
-      lineHeight: 14,
-      color: colors.text,
-    },
-    normalText: {
-      fontFamily: 'JetBrainsMono-Regular', 
-      fontSize: 12,
-      lineHeight: 20,
-      marginTop: 10,
-      color: colors.text,
-    },
-    clearButton: {
-        fontFamily: 'JetBrainsMono-Regular',
-        fontSize: 12,
-        lineHeight: 14,
-        color: '#FF0000',
-        textAlign: 'right',
-        color: colors.clear,
-        padding: 12,
-    },
-    input: {
-      borderColor: colors.text,
-      borderWidth: 1,
-      borderRadius: 3,
-      height: 43,
-      minWidth: 60,
+  inputRow: {
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center',
+    marginTop: 10,
+  }, 
+  label: {
+    fontFamily: 'JetBrainsMono-Regular', 
+    fontSize: 18,
+    lineHeight: 24,
+    color: colors.text,
+  },
+  helper: {
+    fontFamily: 'JetBrainsMono-Italic', 
+    fontSize: 10,
+    lineHeight: 14,
+    color: colors.text,
+  },
+  normalText: {
+    fontFamily: 'JetBrainsMono-Regular', 
+    fontSize: 12,
+    lineHeight: 20,
+    marginTop: 10,
+    color: colors.text,
+  },
+  clearButton: {
       fontFamily: 'JetBrainsMono-Regular',
-      fontSize: 18,
-      lineHeight: 21,
-      padding: 5,
+      fontSize: 12,
+      lineHeight: 14,
+      color: '#FF0000',
       textAlign: 'right',
-      marginRight: 10,
-      alignSelf: 'flex-end',
-      marginTop: -40,
-      color: colors.text,  
-    },
-    inputGroup: {
-      flexDirection: "row",
-      alignSelf: 'flex-end',
-      marginTop: -25,
-    }
+      color: colors.clear,
+      padding: 12,
+  },
+  input: {
+    borderColor: colors.text,
+    borderWidth: 1,
+    borderRadius: 3,
+    height: 43,
+    minWidth: 60,
+    fontFamily: 'JetBrainsMono-Regular',
+    fontSize: 18,
+    lineHeight: 21,
+    padding: 5,
+    textAlign: 'right',
+    marginRight: 10,
+    alignSelf: 'flex-end',
+    marginTop: -40,
+    color: colors.text,  
+  },
+  inputGroup: {
+    flexDirection: "row",
+    alignSelf: 'flex-end',
+    marginTop: -25,
+  }
   });

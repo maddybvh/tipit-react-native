@@ -6,8 +6,8 @@ export default function ThemeToggle() {
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   return (
-      <View style={styles.toggleContainer}>
-        <Switch
+      <View >
+        <Switch style={{marginRight: 5}}
             trackColor={{ false: "#767577", true: "#767577" }}
             onValueChange={toggleSwitch}
             value={isEnabled}
@@ -17,12 +17,3 @@ export default function ThemeToggle() {
   );
 }
 
-const styles = StyleSheet.create({
-    toggleContainer: {
-        padding: 5,
-        textAlign: 'right',
-        marginRight: 10,
-        alignSelf: 'flex-end',
-        marginTop: -30 
-    },
-  });
