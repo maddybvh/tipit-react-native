@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
+import { CurrencyInput } from './CurrencyInput';
 import Results from './Results';
 import UserContext from './UserContext';
 import { useTheme } from '../theme/hooks';
@@ -141,12 +142,16 @@ export default class Caculator extends React.Component {
     render (){
         return (
             <View>                          
-                <View>
-                <Text style={styles.label}>Your Bill:</Text>
-                <Text style={styles.helper}>Pre-tip amount</Text>
-                <TextInput style={styles.input}
-                  onChangeText={this.handleBill}
-                />
+                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                  <View style={{flex: 1}}>
+                    <Text style={styles.label}>Your Bill:</Text>
+                    <Text style={styles.helper}>Pre-tip amount</Text>
+                  </View>
+                  <CurrencyInput style={{flex: 2}}
+                    label='Bill'
+                    value={this.state.bill}
+                    onChange={this.handleBill}
+                  />
                 </View>
                 <View>
                     <Text style={styles.label}>Tip Range:</Text>
@@ -191,7 +196,6 @@ const styles = StyleSheet.create({
       fontFamily: 'JetBrainsMono-Regular', 
       fontSize: 18,
       lineHeight: 24,
-      marginTop: 20,
       color: colors.text,
     },
     helper: {
