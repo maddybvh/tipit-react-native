@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import { CurrencyInput } from './CurrencyInput';
+import { PercentInput } from './PercentInput';
 import Results from './Results';
 import UserContext from './UserContext';
 import { useTheme } from '../theme/hooks';
@@ -157,14 +158,14 @@ export default class Caculator extends React.Component {
                     <Text style={styles.label}>Tip Range:</Text>
                     <Text style={styles.helper}>Low to high</Text>
                     <View style={styles.inputGroup}>
-                        <TextInput style={styles.input}
+                        <PercentInput
                             defaultValue={this.context.defaultTipLow}
-                            onChangeText={this.handleTipLow}
+                            onChange={this.handleTipLow}
                         />
                         <Text style={[styles.normalText, {margin:7}]}>to</Text>
-                        <TextInput style={styles.input}
+                        <PercentInput
                             defaultValue={this.context.defaultTipHigh}
-                            onChangeText={this.handleTipHigh}
+                            onChange={this.handleTipHigh}
                         />                
                     </View>
                     {/* If there are results, print the message and clear button. */}
