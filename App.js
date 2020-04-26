@@ -4,11 +4,14 @@ import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { Header } from './src/components/Header';
 import Calculator from './src/components/Calculator';
-import { UserProvider } from './src/components/UserContext'
+import { UserProvider } from './src/components/UserContext';
+import { useTheme } from './src/theme/hooks';
 
-
+const { colors } = useTheme()
 
 export default function App () {
+  
+  console.log(colors.background)
   let [fontsLoaded] = useFonts({
     'JetBrainsMono-Regular': require('./assets/fonts/JetBrainsMono-Regular.ttf'),
     'JetBrainsMono-Bold': require('./assets/fonts/JetBrainsMono-Bold.ttf'),
@@ -34,8 +37,10 @@ export default function App () {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 60,
-    margin: 20,
+    flex: 1,
+    paddingTop: 60,
+    padding: 35,
     display: 'flex',
+    backgroundColor: colors.background
   }
 });

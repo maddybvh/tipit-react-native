@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking} from 'react-native';
 import { Title } from './Title';
+import { useTheme } from '../theme/hooks';
 
-
+const { colors } = useTheme()
 
 class InfoModal extends Component {
    state = {
@@ -19,33 +20,43 @@ class InfoModal extends Component {
                onRequestClose = {() => { console.log("Modal has been closed.") } }>
                
                 <View style = {styles.modal}>
-                    <TouchableHighlight onPress = {() => {
-                        this.toggleModal(!this.state.modalVisible)}}> 
-                        <Text style = {styles.normalText}>x</Text>
-                    </TouchableHighlight>
-                    <Title />
-                    <Text style = {styles.normalText}>What is this app?</Text>
-                    <Text style = {styles.normalText}>A means to enhance palindromic whimsy.</Text>
-                    <View>
-                        <Text style = {styles.normalText}>(c) Savas Labs 2020</Text>
-                        <Image 
-                        source={require('../../assets/ava-blue.png')}
-                        style={{margin:15, alignSelf: 'center'}} />
-                        <Text style = {styles.normalText} onPress={ ()=> Linking.openURL('https:savaslabs.com') }>Learn more about our #labs initiative.</Text>
-                        <Image 
-                        source={require('../../assets/labs.png')}
-                        style={{margin:15, alignSelf: 'center'}} />
-                        <Image 
+                   <View style={{alignSelf: 'flex-start', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
+                     <TouchableHighlight style={{padding: 5, flex: 1}} onPress = {() => {
+                           this.toggleModal(!this.state.modalVisible)}}> 
+                           <Text style = {styles.clear}>X</Text>
+                     </TouchableHighlight>
+                        <Title style = {{flex: 1}}/>
+                     <View style = {{flex: 1}}></View>
+                   </View>
+                   <Image 
                         source={require('../../assets/dashes.png')}
-                        style={{margin:15, alignSelf: 'center'}} />
-                    </View>
-                  
+                        style={{margin:15, alignSelf: 'flex-start'}} />
 
+                    <Text style = {[styles.normalText, {fontFamily: 'JetBrainsMono-Bold'}]}>What is this app?</Text>
+                    <Text style = {styles.description}>A means to enhance palindromic whimsy.</Text>
+                    <View style={{flex: 1, justifyContent: 'flex-end'}}>
+                       <View style={{flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
+                        <Text style = {[styles.normalText, {textAlign: 'left'}]}>(c) Savas Labs 2020</Text>
+                           <Image 
+                           source={require('../../assets/ava-blue.png')} />
+                       </View>
+                       <View style={{flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
+                        <Text style = {[styles.normalText, {color: colors.link, textDecorationLine: 'underline', textAlign: 'left'}]}
+                              onPress={ ()=> Linking.openURL('https:savaslabs.com') }>
+                                 Learn more about our #labs initiative.
+                           </Text>
+                           <Image 
+                           source={require('../../assets/labs.png')}
+                           style={{marginTop: 10}}/>
+                       </View>
+                    </View>
                </View>
             </Modal>
-            <TouchableHighlight onPress = {() => {this.toggleModal(true)}}>
-               <Text style = {styles.text}>i</Text>
-            </TouchableHighlight>
+            <TouchableHighlight style={{padding: 5}} onPress = {() => {this.toggleModal(true)}}>
+               <Image 
+                  source={require('../../assets/info.png')}
+                  />
+               </TouchableHighlight>
          </View>
       )
    }
@@ -54,17 +65,38 @@ export default InfoModal
 
 const styles = StyleSheet.create ({
     container: {
-       padding: 10
+       padding: 10,
+       backgroundColor: colors.background,
     },
     modal: {
-       alignItems: 'center',
-       padding: 100
+      flex: 1,
+      paddingTop: 60,
+      paddingBottom: 60,
+      padding: 35,
+      display: 'flex',
+      backgroundColor: colors.background,
     },
     normalText: {
-      fontFamily: 'JetBrainsMono-Bold', 
+      fontFamily: 'JetBrainsMono-Regular', 
       fontSize: 14,
-      lineHeight: 16,
+      lineHeight: 20,
       marginTop: 10,
-      textAlign: 'center'
+      textAlign: 'center',
+      color: colors.text,
     },
+    description: {
+      fontFamily: 'JetBrainsMono-Regular', 
+      fontSize: 20,
+      lineHeight: 28,
+      marginTop: 10,
+      textAlign: 'center',
+      color: colors.text,
+      padding: 20,
+    },
+    clear: {
+       color: colors.clear,
+       fontFamily: 'JetBrainsMono-Bold',
+       padding: 10,
+       fontSize: 18,
+    }
  })

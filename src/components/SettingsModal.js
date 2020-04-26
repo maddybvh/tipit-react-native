@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking} from 'react-native';
 import { Title } from './Title';
 import Settings from './Settings.js';
+import { useTheme } from '../theme/hooks';
+
+const { colors } = useTheme()
 
 class SettingsModal extends Component {
    state = {
@@ -18,11 +21,16 @@ class SettingsModal extends Component {
                onRequestClose = {() => { console.log("Modal has been closed.") } }>
                
                 <View style = {styles.modal}>
-                    <Title />
-                    <TouchableHighlight onPress = {() => {
-                        this.toggleModal(!this.state.modalVisible)}}> 
-                        <Text style = {styles.text}>x</Text>
-                    </TouchableHighlight>
+                   <View style= {{flexDirection: 'row', justifyContent: 'space-between'}}>
+                     <View style={{flex: 1}}></View>
+                     <Title style={{flex: 1}}/>
+                     <TouchableHighlight style={{padding: 5, flex: 1}} onPress = {() => {
+                           this.toggleModal(!this.state.modalVisible)}}> 
+                           <Text style = {styles.clear}>X</Text>
+                     </TouchableHighlight>
+
+                   </View>
+
                     <Image 
                         source={require('../../assets/dashes.png')}
                         style={{margin:15, alignSelf: 'center'}} />
@@ -33,7 +41,7 @@ class SettingsModal extends Component {
                 </View>
 
             </Modal>
-            <TouchableHighlight onPress = {() => {this.toggleModal(true)}}>
+            <TouchableHighlight style={{padding: 5}} onPress = {() => {this.toggleModal(true)}}>
                 <Image 
                     source={require('../../assets/settings.png')} />
             </TouchableHighlight>
@@ -46,13 +54,26 @@ export default SettingsModal
 const styles = StyleSheet.create ({
     container: {
        padding: 10,
+       backgroundColor: colors.background,
     },
     modal: {
-       padding: 10,
-       marginTop: 60,
+      flex: 1,
+      paddingTop: 60,
+      padding: 35,
+      display: 'flex',
+      backgroundColor: colors.background,
     },
     text: {
        color: '#3f2949',
-       marginTop: 10
-    }
+       marginTop: 10,
+       color: colors.text,
+    },
+    clear: {
+      color: colors.clear,
+      fontFamily: 'JetBrainsMono-Bold',
+      textAlign: 'right',
+      padding: 10,
+      fontSize: 18,
+   },
+
  })

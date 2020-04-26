@@ -1,5 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { useTheme } from '../theme/hooks';
+
+const { colors } = useTheme()
 
 export const Title = (props) => (
     <View>
@@ -12,7 +15,7 @@ const styles = StyleSheet.create({
       fontFamily: 'JetBrainsMono-Bold',
       fontSize: 24,
       textAlign: 'center',
-      lineHeight: 27,
-      alignSelf: 'center'
+      lineHeight: 45,
+      color: colors.text
     }
   });

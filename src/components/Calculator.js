@@ -1,9 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
+import { CurrencyInput } from './CurrencyInput';
+import { PercentInput } from './PercentInput';
 import Results from './Results';
-import UserContext from './UserContext'
+import UserContext from './UserContext';
+import { useTheme } from '../theme/hooks';
 
 let resultID = 0;
+const { colors } = useTheme()
 
 //Determine if a string is a palindrome
 function palindrome(str) {
@@ -139,41 +143,52 @@ export default class Caculator extends React.Component {
     render (){
         return (
             <View>                          
-                <View>
-                <Text style={styles.label}>Your Bill:</Text>
-                <Text style={styles.helper}>Pre-tip amount</Text>
-                <TextInput style={styles.input}
-                  onChangeText={this.handleBill}
-                />
+                <View style={styles.inputRow}>
+                  <View style={{flex: 1}}>
+                    <Text style={styles.label}>Your Bill:</Text>
+                    <Text style={styles.helper}>Pre-tip amount</Text>
+                  </View>
+                  <CurrencyInput style={{flex: 2}}
+                    label='Bill'
+                    value={this.state.bill}
+                    onChange={this.handleBill}
+                  />
                 </View>
-                <View>
-                    <Text style={styles.label}>Tip Range:</Text>
-                    <Text style={styles.helper}>Low to high</Text>
+                <View style={styles.inputRow}>
+                    <View>
+                      <Text style={styles.label}>Tip Range:</Text>
+                      <Text style={styles.helper}>Low to high</Text>
+                    </View>
                     <View style={styles.inputGroup}>
-                        <TextInput style={styles.input}
+                        <PercentInput
                             defaultValue={this.context.defaultTipLow}
-                            onChangeText={this.handleTipLow}
+                            onChange={this.handleTipLow}
                         />
-                        <Text style={styles.normalText, {margin:7}}>to</Text>
-                        <TextInput style={styles.input}
+                        <Text style={[styles.normalText, {margin:7}]}>to</Text>
+                        <PercentInput
                             defaultValue={this.context.defaultTipHigh}
-                            onChangeText={this.handleTipHigh}
+                            onChange={this.handleTipHigh}
                         />                
                     </View>
+                  </View>
+                  <View>
                     {/* If there are results, print the message and clear button. */}
                     {this.state.results.length > 0 &&
-                        <View>
-                            <Text style={styles.normalText}>{this.state.message}</Text>
-                            <TouchableOpacity onPress={this.clearTable}>
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                            <Text style={[styles.normalText, {flex: 3}]}>{this.state.message}</Text>
+                            <TouchableOpacity onPress={this.clearTable} style={{flex: 1, justifyContent: 'flex-start'}}>
                                 <Text style={styles.clearButton}>X Clear</Text>
                             </TouchableOpacity>
                         </View>
                         }
-                    <Image 
-                        source={require('../../assets/dashes.png')}
-                        style={{margin:15, alignSelf: 'center'}} />
                 </View>
-                <Results results={this.state.results}/>                            
+                <View style={{position: 'absolute', marginTop: 140}}>
+                  <Image 
+                    source={require('../../assets/dashes.png')}
+                    style={{margin:15, alignSelf: 'center'}} />
+                  <Results results={this.state.results}/>
+                </View>
+                                            
             </View>
             );
         }
@@ -182,48 +197,43 @@ export default class Caculator extends React.Component {
 
 
 const styles = StyleSheet.create({
-    label: {
-      fontFamily: 'JetBrainsMono-Regular', 
-      fontSize: 18,
-      lineHeight: 24,
-      marginTop: 20,
-    },
-    helper: {
-      fontFamily: 'JetBrainsMono-Italic', 
-      fontSize: 10,
-      lineHeight: 14,
-    },
-    normalText: {
-      fontFamily: 'JetBrainsMono-Regular', 
-      fontSize: 12,
-      lineHeight: 20,
-      marginTop: 10,
-    },
-    clearButton: {
-        fontFamily: 'JetBrainsMono-Regular',
-        fontSize: 12,
-        lineHeight: 14,
-        color: '#FF0000',
-        textAlign: 'right'
-    },
-    input: {
-      borderColor: '#000000',
-      borderWidth: 1,
-      borderRadius: 3,
-      height: 43,
-      minWidth: 60,
+  inputRow: {
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center',
+    marginTop: 10,
+  }, 
+  label: {
+    fontFamily: 'JetBrainsMono-Regular', 
+    fontSize: 18,
+    lineHeight: 24,
+    color: colors.text,
+  },
+  helper: {
+    fontFamily: 'JetBrainsMono-Italic', 
+    fontSize: 10,
+    lineHeight: 14,
+    color: colors.text,
+  },
+  normalText: {
+    fontFamily: 'JetBrainsMono-Regular', 
+    fontSize: 12,
+    lineHeight: 20,
+    marginTop: 10,
+    color: colors.text,
+  },
+  clearButton: {
       fontFamily: 'JetBrainsMono-Regular',
-      fontSize: 18,
-      lineHeight: 21,
-      padding: 5,
+      fontSize: 12,
+      lineHeight: 14,
+      color: '#FF0000',
       textAlign: 'right',
-      marginRight: 10,
-      alignSelf: 'flex-end',
-      marginTop: -40   
-    },
-    inputGroup: {
-      flexDirection: "row",
-      alignSelf: 'flex-end',
-      marginTop: -25,
-    }
+      color: colors.clear,
+      padding: 12,
+  },
+  inputGroup: {
+    flexDirection: "row",
+    alignSelf: 'flex-end',
+    marginTop: -25,
+  }
   });

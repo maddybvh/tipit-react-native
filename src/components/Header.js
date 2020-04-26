@@ -6,7 +6,7 @@ import { Title } from './Title';
 
 export const Header = (props) => (
   <View>
-    <View style={styles.container}>
+    <View style={{flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
       <InfoModal />
       <Title /> 
       <SettingsModal />
@@ -16,11 +16,4 @@ export const Header = (props) => (
       style={{margin:15, alignSelf: 'center'}} />
   </View>
 )
-
-const styles = {
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  }
-}
 

@@ -7,6 +7,9 @@ import {
   View,
 } from 'react-native';
 import Constants from 'expo-constants';
+import { useTheme } from '../theme/hooks';
+
+const { colors } = useTheme()
 
 function Item({ id, bill, tip, total, selected, onSelect }) {
   return (      
@@ -62,7 +65,7 @@ const styles = StyleSheet.create({
         marginVertical: 8,
         marginHorizontal: 10,
         borderRadius: 3,
-        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+        backgroundColor: colors.row,
     },
     tableHead: {
         fontFamily: 'JetBrainsMono-Bold',
@@ -71,17 +74,20 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         flex: 1, 
         flexDirection: 'row', 
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
+        color: colors.text,
         },
     results: {
         fontFamily: 'JetBrainsMono-Regular',
         fontSize: 18,
+        color: colors.text,
         },
     total: {
         fontFamily: 'JetBrainsMono-Regular',
         fontSize: 18,
         flex: 2,
         textAlign: 'right',
+        color: colors.text,
         },
     }
 );

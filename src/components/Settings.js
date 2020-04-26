@@ -1,7 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import ThemeToggle from './ThemeToggle.js';
 import UserContext from './UserContext';
+import { PercentInput } from './PercentInput';
+import { useTheme } from '../theme/hooks';
+
+const { colors } = useTheme()
 
 export default class Settings extends React.Component {
     static contextType = UserContext
@@ -18,21 +22,21 @@ export default class Settings extends React.Component {
         return (
             <View>
                 <Text style={styles.normalText}>Settings</Text>                          
-                <View>
+                <View style={styles.inputRow}>
                     <Text style={styles.label}>Low tip default</Text>
-                    <TextInput style={styles.input}
+                    <PercentInput 
                         defaultValue={this.context.defaultTipLow}
-                        onChangeText={this.handleTipLow}                    
+                        onChange={this.handleTipLow}                    
                     />
                 </View>
-                <View>
+                <View style={styles.inputRow}>
                     <Text style={styles.label}>High tip default</Text>
-                    <TextInput style={styles.input}
+                    <PercentInput 
                         defaultValue={this.context.defaultTipHigh}
-                        onChangeText={this.handleTipHigh} 
+                        onChange={this.handleTipHigh} 
                     />
                 </View>
-                <View>
+                <View style={styles.inputRow}>
                     <Text style={styles.label}>Dark Mode</Text>
                     <ThemeToggle />
                 </View>
@@ -43,41 +47,25 @@ export default class Settings extends React.Component {
 
 
 const styles = StyleSheet.create({
+    inputRow: {
+        flexDirection: 'row', 
+        justifyContent: 'space-between', 
+        alignItems: 'center',
+        marginTop: 10,
+      },
     label: {
       fontFamily: 'JetBrainsMono-Regular', 
       fontSize: 18,
       lineHeight: 24,
-      marginTop: 20,
-      alignSelf:'flex-start'
+      alignSelf:'flex-start',
+      color: colors.text,
     },
     normalText: {
       fontFamily: 'JetBrainsMono-Bold', 
       fontSize: 14,
       lineHeight: 16,
       marginTop: 10,
-      textAlign: 'center'
-    },
-    input: {
-      borderColor: '#000000',
-      borderWidth: 1,
-      borderRadius: 3,
-      height: 43,
-      minWidth: 60,
-      fontFamily: 'JetBrainsMono-Regular',
-      fontSize: 18,
-      lineHeight: 21,
-      padding: 5,
-      textAlign: 'right',
-      marginRight: 10,
-      alignSelf: 'flex-end',
-      marginTop: -40   
-    },
-    toggleContainer: {
-        padding: 5,
-        textAlign: 'right',
-        marginRight: 10,
-        alignSelf: 'flex-end',
-        marginTop: -40 
+      textAlign: 'center',
+      color: colors.text,
     },
   });
-
