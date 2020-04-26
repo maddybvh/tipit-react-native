@@ -5,18 +5,21 @@ import {
   StyleSheet,
   Text,
   View,
+  Clipboard,
 } from 'react-native';
 import { useTheme } from '../theme/hooks';
 
 const { colors } = useTheme()
 
 function Item({ id, bill, tip, total, selected, onSelect }) {
-  return (      
+    return (      
         <TouchableOpacity 
-            //   onPress={}
-            style={[
-                styles.item,               
-            ]}
+            onPress={() => {
+                Clipboard.setString(tip);
+                alert('Copied tip to Clipboard!');
+            }}
+            //onPress={() => console.log(tip)}
+            style={styles.item}
             >
             <View {...{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
                 <Text style={styles.results}>${bill} + </Text>
@@ -27,8 +30,8 @@ function Item({ id, bill, tip, total, selected, onSelect }) {
   );
 }
 
-export default class Results extends React.Component {
-    
+
+export default class Results extends React.Component {    
     render (){
         return (
             <FlatList 
