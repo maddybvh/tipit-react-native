@@ -12,7 +12,6 @@ const { colors } = useTheme()
 
 export default function App () {
   
-  console.log(colors.background)
   let [fontsLoaded] = useFonts({
     'JetBrainsMono-Regular': require('./assets/fonts/JetBrainsMono-Regular.ttf'),
     'JetBrainsMono-Bold': require('./assets/fonts/JetBrainsMono-Bold.ttf'),
