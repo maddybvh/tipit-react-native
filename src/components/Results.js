@@ -16,9 +16,8 @@ function Item({ id, bill, tip, total, selected, onSelect }) {
         <TouchableOpacity 
             onPress={() => {
                 Clipboard.setString(tip);
-                alert('Copied tip to Clipboard!');
+                alert('Copied your $' + tip + ' tip to the clipboard. Happy tipping :)');
             }}
-            //onPress={() => console.log(tip)}
             style={styles.item}
             >
             <View {...{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
