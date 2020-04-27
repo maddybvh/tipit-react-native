@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Text, TouchableHighlight, View, StyleSheet, Image, Linking, TouchableOpacity} from 'react-native';
+import { Modal, Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import { Title } from './Title';
 import { Footer } from './Footer';
 import { Dashes } from './Dashes';
