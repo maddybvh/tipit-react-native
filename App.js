@@ -18,7 +18,7 @@ export default function App () {
     'JetBrainsMono-Italic': require('./assets/fonts/JetBrainsMono-Italic.ttf'),
   });
 
-  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'light'} //theme light doesn't currently do anything.
+  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'light'} //theme doesn't currently do anything.
 
 
   if (!fontsLoaded) {
