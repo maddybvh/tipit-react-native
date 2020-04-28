@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { Header } from './src/components/Header';
-import Calculator from './src/components/Calculator';
+import { Calculator } from './src/components/Calculator';
 import { Footer } from './src/components/Footer';
 import { UserProvider, useTheme } from './src/components/UserContext';
 import { themedColors } from './src/theme/index'
