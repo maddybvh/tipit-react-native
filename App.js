@@ -5,10 +5,7 @@ import { AppLoading } from 'expo';
 import { Header } from './src/components/Header';
 import Calculator from './src/components/Calculator';
 import { Footer } from './src/components/Footer';
-import { UserProvider } from './src/components/UserContext';
-import { useTheme } from './src/theme/hooks';
-
-const { colors } = useTheme()
+import { UserProvider, useTheme } from './src/components/UserContext';
 
 export default function App () {
   
@@ -18,7 +15,9 @@ export default function App () {
     'JetBrainsMono-Italic': require('./assets/fonts/JetBrainsMono-Italic.ttf'),
   });
 
-  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'light'}
+  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'light', useTheme }
+  const colors = useTheme
+
 
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -26,7 +25,7 @@ export default function App () {
   else {
     return (
       <UserProvider value={userSettings}>
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: colors.background}]}>
           <Header />
           <Calculator />
           <Footer />
@@ -42,6 +41,5 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     padding: 10,
     display: 'flex',
-    backgroundColor: colors.background
   }
 });

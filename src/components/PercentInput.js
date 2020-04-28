@@ -1,24 +1,25 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
-import { useTheme } from '../theme/hooks';
+import UserContext from './UserContext';
 
-const { colors } = useTheme();
-
-export const PercentInput = ({ defaultValue, onChange, ...props}) => (
-    <View style={styles.container}>
-        <TextInput 
-            keyboardType={'numeric'}
-            style={styles.input}
-            defaultValue={defaultValue}
-            onChangeText={onChange}
-            />
-        <Text style={styles.unit}>%</Text>
-    </View>
-)
+export const PercentInput = ({ defaultValue, onChange, ...props}) => {
+    const context = useContext(UserContext)
+    const { colors } = context.useTheme()
+    return (
+        <View style={[styles.container, {borderColor: colors.text}]}>
+            <TextInput 
+                keyboardType={'numeric'}
+                style={[styles.input, {color: colors.text}]}
+                defaultValue={defaultValue}
+                onChangeText={onChange}
+                />
+            <Text style={[styles.unit, {color: colors.text}]}>%</Text>
+        </View>
+    )
+}
 
 const styles = StyleSheet.create({
     container: {
-        borderColor: colors.text,
         borderWidth: 1,
         borderRadius: 3,
         height: 43,
@@ -31,7 +32,6 @@ const styles = StyleSheet.create({
         fontFamily: 'JetBrainsMono-Regular', 
         fontSize: 20,
         lineHeight: 20,
-        color: colors.text,
         flex: 1,
     },
     input: {
@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 21,
         textAlign: 'right',
-        color: colors.text,
         flex: 2,
         paddingRight: 5,
     },
