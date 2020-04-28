@@ -5,7 +5,7 @@ import { AppLoading } from 'expo';
 import { Header } from './src/components/Header';
 import Calculator from './src/components/Calculator';
 import { Footer } from './src/components/Footer';
-import { UserProvider, useTheme2 } from './src/components/UserContext';
+import { UserProvider, useTheme } from './src/components/UserContext';
 import { themedColors } from './src/theme/index'
 
 export default function App () {
@@ -16,9 +16,9 @@ export default function App () {
     'JetBrainsMono-Italic': require('./assets/fonts/JetBrainsMono-Italic.ttf'),
   });
 
-  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'light', useTheme2 }
+  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'light', useTheme }
   
-  // duplication of useTheme2, should be refactored
+  // duplication of useTheme, should be refactored
   const colors = userSettings.theme ? themedColors[userSettings.theme] : themedColors.default 
 
 

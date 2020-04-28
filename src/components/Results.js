@@ -4,7 +4,7 @@ import UserContext from './UserContext';
 
 function Item({ id, bill, tip, total, selected, onSelect }) {
     const context = useContext(UserContext)
-    const { colors } = context.useTheme2()
+    const { colors } = context.useTheme()
     return (      
         <TouchableOpacity 
             onPress={() => {
@@ -25,7 +25,7 @@ function Item({ id, bill, tip, total, selected, onSelect }) {
 
 export const Results = ({results}) =>  {    
     const context = useContext(UserContext)
-    const { colors } = context.useTheme2()
+    const { colors } = context.useTheme()
         return (
             <FlatList 
                 data={results}

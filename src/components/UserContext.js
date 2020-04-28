@@ -5,7 +5,7 @@ const UserContext = React.createContext({
 
 })
 
-export const useTheme2 = () => {
+export const useTheme = () => {
     const theme = useContext(UserContext).theme;
     const colors = theme ? themedColors[theme] : themedColors.default
     return {

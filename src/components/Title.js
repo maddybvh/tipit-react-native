@@ -4,7 +4,7 @@ import UserContext from './UserContext';
 
 export const Title = (props) => {
   const context = useContext(UserContext)
-  const { colors } = context.useTheme2()
+  const { colors } = context.useTheme()
   return (
     <View>
       <Text style={[styles.title, {color: colors.text}]}>tipit</Text> 

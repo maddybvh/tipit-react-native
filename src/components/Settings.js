@@ -6,7 +6,7 @@ import { PercentInput } from './PercentInput';
 
 export const Settings = () => {
     const context = useContext(UserContext)
-    const { colors } = context.useTheme2()
+    const { colors } = context.useTheme()
 
     const defaultTipLow = context.defaultTipLow;
     const defaultTipHigh = context.defaultTipHigh;

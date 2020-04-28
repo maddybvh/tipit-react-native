@@ -4,7 +4,7 @@ import UserContext from './UserContext';
 
 export const CurrencyInput = ({ value, onChange, ...props}) => {
     const context = useContext(UserContext)
-    const { colors } = context.useTheme2()
+    const { colors } = context.useTheme()
     return (
     <View style={[styles.container, {borderColor: colors.text}]}>
         <Text style={[styles.unit, {color: colors.text}]}>$</Text>

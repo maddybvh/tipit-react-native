@@ -4,7 +4,7 @@ import UserContext from './UserContext';
 
 export const PercentInput = ({ defaultValue, onChange, ...props}) => {
     const context = useContext(UserContext)
-    const { colors } = context.useTheme2()
+    const { colors } = context.useTheme()
     return (
         <View style={[styles.container, {borderColor: colors.text}]}>
             <TextInput 

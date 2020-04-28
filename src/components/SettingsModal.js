@@ -4,7 +4,6 @@ import { Title } from './Title';
 import { Footer } from './Footer';
 import { Dashes } from './Dashes';
 import { Settings } from './Settings.js';
-import { useTheme } from '../theme/hooks';
 import UserContext from './UserContext';
 import { themedColors } from '../theme/index';
 import { AppLoading } from 'expo';
