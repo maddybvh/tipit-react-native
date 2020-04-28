@@ -6,9 +6,7 @@ import { Header } from './src/components/Header';
 import Calculator from './src/components/Calculator';
 import { Footer } from './src/components/Footer';
 import { UserProvider, useTheme2 } from './src/components/UserContext';
-import { useTheme } from './src/theme/hooks';
-
-const { colors } = useTheme()
+import { themedColors } from './src/theme/index'
 
 export default function App () {
   
@@ -18,7 +16,10 @@ export default function App () {
     'JetBrainsMono-Italic': require('./assets/fonts/JetBrainsMono-Italic.ttf'),
   });
 
-  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'light', useTheme2 }
+  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'dark', useTheme2 }
+  
+  // duplication of useTheme2, should be refactored
+  const colors = userSettings.theme ? themedColors[userSettings.theme] : themedColors.default 
 
 
   if (!fontsLoaded) {
@@ -27,7 +28,7 @@ export default function App () {
   else {
     return (
       <UserProvider value={userSettings}>
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: colors.background}]}>
           <Header />
           <Calculator />
           <Footer />
@@ -43,6 +44,5 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     padding: 10,
     display: 'flex',
-    backgroundColor: colors.background
   }
 });
