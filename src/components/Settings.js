@@ -1,40 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ThemeToggle from './ThemeToggle.js';
 import UserContext from './UserContext';
 import { PercentInput } from './PercentInput';
-import { useTheme } from '../theme/hooks';
 
-const { colors } = useTheme()
+export const Settings = () => {
+    const context = useContext(UserContext)
+    const { colors } = context.useTheme2()
 
-export default class Settings extends React.Component {
-    static contextType = UserContext
+    const defaultTipLow = context.defaultTipLow;
+    const defaultTipHigh = context.defaultTipHigh;
 
-    render () {
+
         return (
             <View>
-                <Text style={styles.normalText}>Settings</Text>                          
+                <Text style={[styles.normalText, {color: colors.text}]}>Settings</Text>                          
                 <View style={styles.inputRow}>
-                    <Text style={styles.label}>Low tip default:</Text>
+                    <Text style={[styles.label, {color: colors.text}]}>Low tip default:</Text>
                     <PercentInput 
-                        defaultValue={this.context.defaultTipLow}
-                        onChange={this.context.updateDefaultTipLow}                    
+                        defaultValue={defaultTipLow}
+                        // onChange={} //@TODO                   
                     />
                 </View>
                 <View style={styles.inputRow}>
-                    <Text style={styles.label}>High tip default:</Text>
+                    <Text style={[styles.label, {color: colors.text}]}>High tip default:</Text>
                     <PercentInput 
-                        defaultValue={this.context.defaultTipHigh}
-                        onChange={this.context.updateDefaultTipHigh} 
+                        defaultValue={defaultTipHigh}
+                        //onChange={} //@TODO
                     />
                 </View>
                 <View style={styles.inputRow}>
-                    <Text style={styles.label}>Dark Mode:</Text>
+                    <Text style={[styles.label, {color: colors.text}]}>Dark Mode:</Text>
                     <ThemeToggle />
                 </View>
             </View>
         );
-    }
 }
 
 
@@ -50,13 +50,13 @@ const styles = StyleSheet.create({
       fontSize: 18,
       lineHeight: 24,
       alignSelf:'flex-start',
-      color: colors.text,
+      //color: colors.text,
     },
     normalText: {
       fontFamily: 'JetBrainsMono-Bold', 
       fontSize: 14,
       lineHeight: 16,
       textAlign: 'center',
-      color: colors.text,
+      //color: colors.text,
     },
   });

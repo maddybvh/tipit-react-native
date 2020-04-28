@@ -3,7 +3,7 @@ import { Modal, Text, View, StyleSheet, Image, TouchableOpacity} from 'react-nat
 import { Title } from './Title';
 import { Footer } from './Footer';
 import { Dashes } from './Dashes';
-import Settings from './Settings.js';
+import { Settings } from './Settings.js';
 import { useTheme } from '../theme/hooks';
 
 const { colors } = useTheme()
