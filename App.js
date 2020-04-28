@@ -6,7 +6,6 @@ import { Header } from './src/components/Header';
 import Calculator from './src/components/Calculator';
 import { Footer } from './src/components/Footer';
 import { UserProvider, useTheme } from './src/components/UserContext';
-import { themedColors } from './src/theme/index'
 
 export default function App () {
   
