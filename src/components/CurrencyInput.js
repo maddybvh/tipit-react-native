@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
-import { useTheme } from '../theme/hooks';
+import UserContext from './UserContext';
 
-const { colors } = useTheme();
-
-export const CurrencyInput = ({ value, onChange, ...props}) => (
-    <View style={styles.container}>
-        <Text style={styles.unit}>$</Text>
+export const CurrencyInput = ({ value, onChange, ...props}) => {
+    const context = useContext(UserContext)
+    const { colors } = context.useTheme2()
+    return (
+    <View style={[styles.container, {color: colors.text}]}>
+        <Text style={[styles.unit, {color: colors.text}]}>$</Text>
         <TextInput 
             keyboardType={'decimal-pad'}
-            style={styles.input}
+            style={[styles.input, {color: colors.text}]}
             value={value}
             onChangeText={onChange}
             />
     </View>
-  )
+  )}
 
   const styles = StyleSheet.create({
     container: {
-        borderColor: colors.text,
         borderWidth: 1,
         borderRadius: 3,
         height: 43,
@@ -31,7 +31,6 @@ export const CurrencyInput = ({ value, onChange, ...props}) => (
         fontFamily: 'JetBrainsMono-Regular', 
         fontSize: 20,
         lineHeight: 20,
-        color: colors.text,
         marginLeft: 5,
         flex: 1,
     },
@@ -40,7 +39,6 @@ export const CurrencyInput = ({ value, onChange, ...props}) => (
         fontSize: 18,
         lineHeight: 21,
         textAlign: 'right',
-        color: colors.text,
         flex: 4,
         paddingRight: 5,
     },
