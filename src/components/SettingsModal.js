@@ -1,44 +1,29 @@
-import React, { Component } from 'react';
+// Reference: //https://upmostly.com/tutorials/modal-components-react-custom-hooks
+
+import React, { useContext } from 'react';
 import { Modal, Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import { Title } from './Title';
 import { Footer } from './Footer';
 import { Dashes } from './Dashes';
 import { Settings } from './Settings.js';
+import useModal from '../hooks/useModal.js'
 import UserContext from './UserContext';
-import { themedColors } from '../theme/index';
-import { AppLoading } from 'expo';
 
-//const { colors } = useTheme()
-
-class SettingsModal extends Component {
-   static contextType = UserContext;
-  
-   componentDidMount() {
-     this.setState({
-       colors: this.context.theme ? themedColors[this.context.theme] : themedColors.default})
-   }
-
-   state = {
-      modalVisible: false,
-   }
-   toggleModal(visible) {
-      this.setState({ modalVisible: visible });
-   }
-   render() {
-      if (this.state.colors) {
-         let colors = this.state.colors; //If statement is necessary to ensure the state is set before using themed colors
-         return (
+export const SettingsModal = () => {
+   const context = useContext(UserContext)
+   const { colors } = context.useTheme()
+   const { isShowing, toggle } = useModal();
+   return (
             <View style = {[styles.container, {backgroundColor: colors.background}]}>
                <Modal animationType = {"slide"} transparent = {false}
-                  visible = {this.state.modalVisible}
+                  visible = {isShowing}
                   onRequestClose = {() => { console.log("Modal has been closed.") } }>
                   
                   <View style = {[styles.modal, {backgroundColor: colors.background}]}>
                      <View style= {{flexDirection: 'row', justifyContent: 'space-between'}}>
                         <View style={{flex: 1}}></View>
                         <Title style={{flex: 1}}/>
-                        <TouchableOpacity style={{padding: 5, flex: 1}} onPress = {() => {
-                              this.toggleModal(!this.state.modalVisible)}}> 
+                        <TouchableOpacity style={{padding: 5, flex: 1}} onPress = {() => {toggle()}}> 
                               <Text style = {[styles.clear, {color: colors.clear}]}>X</Text>
                         </TouchableOpacity>
                      </View>
@@ -48,17 +33,14 @@ class SettingsModal extends Component {
                   </View>
 
                </Modal>
-               <TouchableOpacity style={{padding: 5}} onPress = {() => {this.toggleModal(true)}}>
+               <TouchableOpacity style={{padding: 5}} onPress = {() => {toggle()}}>
                   <Image 
                      source={require('../../assets/settings.png')} />
                </TouchableOpacity>
             </View>
-         )}
-      else {
-         return <AppLoading />
-      }
+         )
    }
-}
+
 export default SettingsModal
 
 const styles = StyleSheet.create ({
