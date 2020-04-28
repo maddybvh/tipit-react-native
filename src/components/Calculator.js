@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { CurrencyInput } from './CurrencyInput';
 import { PercentInput } from './PercentInput';
 import { Dashes } from './Dashes';
@@ -151,13 +151,13 @@ export default class Caculator extends React.Component {
     }
     
     render (){
-      if (this.state.colors) {
+      if (this.state.colors) { //If statement is necessary to ensure the state is set before using themed colors
         return (
           <View>                          
               <View style={styles.inputRow}>
                 <View style={{flex: 1}}>
                   <Text style={[styles.label, {color:this.state.colors.text}]}>Your Bill:</Text>
-                  <Text style={styles.helper}>Pre-tip amount</Text>
+                  <Text style={[styles.helper, {color:this.state.colors.text}]}>Pre-tip amount</Text>
                 </View>
                 <CurrencyInput style={{flex: 2}}
                   label='Bill'
@@ -167,15 +167,15 @@ export default class Caculator extends React.Component {
               </View>
               <View style={styles.inputRow}>
                   <View>
-                    <Text style={styles.label}>Tip Range:</Text>
-                    <Text style={styles.helper}>Low to high</Text>
+                    <Text style={[styles.label, {color:this.state.colors.text}]}>Tip Range:</Text>
+                    <Text style={[styles.helper, {color:this.state.colors.text}]}>Low to high</Text>
                   </View>
                   <View style={styles.inputGroup}>
                       <PercentInput
                           defaultValue={this.context.defaultTipLow}
                           onChange={this.handleTipLow}
                       />
-                      <Text style={[styles.normalText, {margin:7}]}>to</Text>
+                      <Text style={[styles.normalText, {margin:7, color:this.state.colors.text}]}>to</Text>
                       <PercentInput
                           defaultValue={this.context.defaultTipHigh}
                           onChange={this.handleTipHigh}
@@ -186,9 +186,9 @@ export default class Caculator extends React.Component {
                   {/* If there are results, print the message and clear button. */}
                   {this.state.results.length > 0 &&
                       <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                          <Text style={[styles.normalText, {flex: 3}]}>{this.state.message}</Text>
+                          <Text style={[styles.normalText, {flex: 3, color:this.state.colors.text}]}>{this.state.message}</Text>
                           <TouchableOpacity onPress={this.clearAll} style={{flex: 1, justifyContent: 'flex-start'}}>
-                              <Text style={styles.clearButton}>X Clear</Text>
+                              <Text style={[styles.clearButton, {color: this.state.colors.clearButton}]}>X Clear</Text>
                           </TouchableOpacity>
                       </View>
                       }
@@ -202,9 +202,7 @@ export default class Caculator extends React.Component {
           else {
             return <AppLoading />
           }
-
       }
-
   }
 
 
@@ -219,20 +217,17 @@ const styles = StyleSheet.create({
     fontFamily: 'JetBrainsMono-Regular', 
     fontSize: 18,
     lineHeight: 24,
-    //color: colors.text,
   },
   helper: {
     fontFamily: 'JetBrainsMono-Italic', 
     fontSize: 10,
     lineHeight: 14,
-    //color: colors.text,
   },
   normalText: {
     fontFamily: 'JetBrainsMono-Regular', 
     fontSize: 12,
     lineHeight: 20,
     marginTop: 10,
-    //color: colors.text,
   },
   clearButton: {
       fontFamily: 'JetBrainsMono-Regular',
@@ -240,7 +235,6 @@ const styles = StyleSheet.create({
       lineHeight: 14,
       color: '#FF0000',
       textAlign: 'right',
-      //color: colors.clear,
       padding: 12,
   },
   inputGroup: {
