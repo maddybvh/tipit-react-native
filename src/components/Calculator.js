@@ -151,6 +151,7 @@ export default class Caculator extends React.Component {
     }
     
     render (){
+      //console.log(this.context)
       if (this.state.colors) { //If statement is necessary to ensure the state is set before using themed colors
         return (
           <View>                          

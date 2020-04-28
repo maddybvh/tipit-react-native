@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -18,7 +18,7 @@ export default function App () {
     'JetBrainsMono-Italic': require('./assets/fonts/JetBrainsMono-Italic.ttf'),
   });
 
-  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'dark', useTheme2 } //theme doesn't currently do anything.
+  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'dark', useTheme2 }
 
 
   if (!fontsLoaded) {
