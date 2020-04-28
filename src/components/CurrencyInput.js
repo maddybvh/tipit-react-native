@@ -6,7 +6,7 @@ export const CurrencyInput = ({ value, onChange, ...props}) => {
     const context = useContext(UserContext)
     const { colors } = context.useTheme2()
     return (
-    <View style={[styles.container, {color: colors.text}]}>
+    <View style={[styles.container, {borderColor: colors.text}]}>
         <Text style={[styles.unit, {color: colors.text}]}>$</Text>
         <TextInput 
             keyboardType={'decimal-pad'}
