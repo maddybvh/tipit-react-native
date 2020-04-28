@@ -1,15 +1,6 @@
-import React from 'react';
-import {
-  TouchableOpacity,
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-  Clipboard,
-} from 'react-native';
-import { useTheme } from '../theme/hooks';
-
-const { colors } = useTheme()
+import React, { useContext } from 'react';
+import { TouchableOpacity, FlatList, StyleSheet, Text, View, Clipboard } from 'react-native';
+import UserContext from './UserContext';
 
 function Item({ id, bill, tip, total, selected, onSelect }) {
     return (      
@@ -30,11 +21,12 @@ function Item({ id, bill, tip, total, selected, onSelect }) {
 }
 
 
-export default class Results extends React.Component {    
-    render (){
+export const Results = ({results}) =>  {    
+    const context = useContext(UserContext)
+    const { colors } = context.useTheme2()
         return (
             <FlatList 
-                data={this.props.results}
+                data={results}
                 renderItem={({ item, index }) => (
                     <Item
                         bill={item.bill}
@@ -44,7 +36,7 @@ export default class Results extends React.Component {
                 )}
                 keyExtractor={item => item.id}
                 ListHeaderComponent={
-                    this.props.results.length > 0 &&
+                    results.length > 0 &&
                         <View style={styles.tableHead}>
                             <Text style={styles.tableHead}>Bill</Text>
                             <Text style={styles.tableHead}>Tip</Text>
@@ -53,7 +45,6 @@ export default class Results extends React.Component {
                     }
             />
         );
-    }
 }
 
 const styles = StyleSheet.create({
@@ -62,7 +53,6 @@ const styles = StyleSheet.create({
         marginVertical: 8,
         marginHorizontal: 10,
         borderRadius: 3,
-        backgroundColor: colors.row,
     },
     tableHead: {
         fontFamily: 'JetBrainsMono-Bold',
@@ -72,19 +62,16 @@ const styles = StyleSheet.create({
         flex: 1, 
         flexDirection: 'row', 
         justifyContent: 'space-evenly',
-        color: colors.text,
         },
     results: {
         fontFamily: 'JetBrainsMono-Regular',
         fontSize: 18,
-        color: colors.text,
         },
     total: {
         fontFamily: 'JetBrainsMono-Regular',
         fontSize: 18,
         flex: 2,
         textAlign: 'right',
-        color: colors.text,
         },
     }
 );

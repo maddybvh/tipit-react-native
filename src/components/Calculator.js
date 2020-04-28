@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { CurrencyInput } from './CurrencyInput';
 import { PercentInput } from './PercentInput';
 import { Dashes } from './Dashes';
-import Results from './Results';
+import { Results } from './Results';
 import UserContext from './UserContext';
 import { themedColors } from '../theme/index';
 import { AppLoading } from 'expo';
@@ -151,7 +151,6 @@ export default class Caculator extends React.Component {
     }
     
     render (){
-      //console.log(this.context)
       if (this.state.colors) { //If statement is necessary to ensure the state is set before using themed colors
         return (
           <View>                          
