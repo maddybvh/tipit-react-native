@@ -2,12 +2,9 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import UserContext from './UserContext';
 
-
-
 export const Title = (props) => {
   const context = useContext(UserContext)
   const { colors } = context.useTheme2()
-  console.log(context)
   return (
     <View>
       <Text style={[styles.title, {color: colors.text}]}>tipit</Text> 
