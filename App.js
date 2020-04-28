@@ -6,6 +6,7 @@ import { Header } from './src/components/Header';
 import Calculator from './src/components/Calculator';
 import { Footer } from './src/components/Footer';
 import { UserProvider, useTheme } from './src/components/UserContext';
+import { themedColors } from './src/theme/index'
 
 export default function App () {
   
@@ -15,8 +16,10 @@ export default function App () {
     'JetBrainsMono-Italic': require('./assets/fonts/JetBrainsMono-Italic.ttf'),
   });
 
-  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'light', useTheme }
-  const colors = useTheme
+  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'dark', useTheme }
+
+  //this is a repeat of useTheme in /UserContext and should be refactored
+  const colors = userSettings.theme ? themedColors[userSettings.theme] : themedColors.default
 
 
   if (!fontsLoaded) {
