@@ -25,11 +25,11 @@ class InfoModal extends Component {
       if (this.state.colors) {
          let colors = this.state.colors; //If statement is necessary to ensure the state is set before using themed colors
          return (
-            <View style = {[styles.container, {backgroundColor: colors.backgroundColor}]}>
+            <View style = {[styles.container, {backgroundColor: colors.background}]}>
                <Modal animationType = {"slide"} transparent = {false}
                   visible = {this.state.modalVisible}
                   onRequestClose = {() => { console.log("Modal has been closed.") } }>
-                  <View style = {[styles.modal, {color: colors.backgroundColor}]}>
+                  <View style = {[styles.modal, {backgroundColor: colors.background}]}>
                      <View style={{alignSelf: 'flex-start', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
                         <TouchableOpacity style={{padding: 5, flex: 1}} onPress = {() => {
                               this.toggleModal(!this.state.modalVisible)}}> 
