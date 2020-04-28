@@ -38,7 +38,7 @@ function findPalTips(billAmount, tipPercentLow, tipPercentHigh) {
     billAmount * tipPercentHigh * 0.01
   );
   return tipArray;
-}
+  }
 
 //Create an array with all totals with palindrome tips
 function arrayTipsAndTotals(billAmount, tipArray) {
@@ -93,21 +93,21 @@ export const Calculator = () => {
   const [message, setMessage] = useState('');
 
   
-  handleBill = (text) => {
-    setBill(text);
-    findResults();
+  async function handleBill (text) {
+    await setBill(text)
+    setResults(findResults());
   }
-  handleTipLow = (text) => {
-    setTipLow(text);
-    findResults();
+  async function handleTipLow (text) {
+    await setTipLow(text);
+    setResults(findResults());
   }
-  handleTipHigh = (text) => {
-    setTipHigh(text);
-    findResults();
+  async function handleTipHigh (text) {
+    await setTipHigh(text)
+    setResults(findResults());
   }
   clearTable = () => {
-      setResults([]);
-      setMessage('');
+    setResults([]);
+    setMessage('');
   }
   clearAll = () => {
     clearTable();
@@ -116,25 +116,24 @@ export const Calculator = () => {
 
   //Update the state based on the functions above
   findResults = () => {
-    clearTable();
-    if (bill && tipLow && tipHigh && (tipLow <= tipHigh)){
-        const billFloat = parseFloat(bill);
-        const tipLowFloat = parseFloat(tipLow);
-        const tipHighFloat = parseFloat(tipHigh);
+    if (bill && tipLow && tipHigh && (parseFloat(tipLow) <= parseFloat(tipHigh))){
+      const billFloat = parseFloat(bill);
+      const tipLowFloat = parseFloat(tipLow);
+      const tipHighFloat = parseFloat(tipHigh);
 
-        const tipArray = findPalTips(billFloat, tipLowFloat, tipHighFloat);
-        const allTotalArray = arrayTipsAndTotals(billFloat, tipArray);
-        const palTotalArray = findPalTotals(billFloat, tipArray);
-        
-        if (palTotalArray && palTotalArray.length) { //both tip & total are arrays
-            message = 'Woot! There are ' + palTotalArray.length + ' ways for the tip AND total to be palindromes!';
-            results = palTotalArray;
-        return
-        } else if (tipArray && tipArray.length) {
-            message = 'You can tip in ' + tipArray.length + ' palindromes!';
-            results = allTotalArray;
-        return
-        }
+      const tipArray = findPalTips(billFloat, tipLowFloat, tipHighFloat);
+      const allTotalArray = arrayTipsAndTotals(billFloat, tipArray);
+      const palTotalArray = findPalTotals(billFloat, tipArray);
+      
+      if (palTotalArray && palTotalArray.length) { //both tip & total are arrays
+          setMessage('Woot! There are ' + palTotalArray.length + ' ways for the tip AND total to be palindromes!');
+          setResults(palTotalArray);
+          return palTotalArray
+      } else if (tipArray && tipArray.length) {
+          setMessage('You can tip in ' + tipArray.length + ' palindromes!');
+          setResults(allTotalArray);
+          return allTotalArray
+      }
     }
   }
 
@@ -147,8 +146,8 @@ export const Calculator = () => {
           </View>
           <CurrencyInput style={{flex: 2}}
             label='Bill'
-            value={bill}
-            onChange={() => handleBill()}
+            defaultValue={bill}
+            onChange={handleBill}
           />
         </View>
         <View style={styles.inputRow}>
@@ -158,13 +157,13 @@ export const Calculator = () => {
             </View>
             <View style={styles.inputGroup}>
                 <PercentInput
-                    defaultValue={context.defaultTipLow}
-                    onChange={() => handleTipLow()}
+                    defaultValue={tipLow}
+                    onChange={handleTipLow}
                 />
                 <Text style={[styles.normalText, {margin:7, color: colors.text}]}>to</Text>
                 <PercentInput
-                    defaultValue={context.defaultTipHigh}
-                    onChange={() => handleTipHigh()}
+                    defaultValue={tipHigh}
+                    onChange={handleTipHigh}
                 />                
             </View>
           </View>
@@ -172,8 +171,11 @@ export const Calculator = () => {
             {/* If there are results, print the message and clear button. */}
             {results.length > 0 &&
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                    <Text style={[styles.normalText, {flex: 3, color: colors.text}]}>{message}</Text>
-                    <TouchableOpacity onPress={clearAll()} style={{flex: 1, justifyContent: 'flex-start'}}>
+                    <Text 
+                      style={[styles.normalText, {flex: 3, color: colors.text}]}>
+                      {message}
+                    </Text>
+                    <TouchableOpacity onPress={clearAll} style={{flex: 1, justifyContent: 'flex-start'}}>
                         <Text style={[styles.clearButton, {color: colors.clear}]}>X Clear</Text>
                     </TouchableOpacity>
                 </View>
