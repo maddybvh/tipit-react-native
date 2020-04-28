@@ -1,13 +1,9 @@
-import { UserContext } from '../../src/components/UserContext'
-import { themedColors } from './index'
 
-function ThemeHook () {
-  const [theme, setTheme] = useState(UserContext.theme);
-}
+import { themedColors } from './index'
 
 export const useTheme = () => {
     //@TODO make theme variable
-    const theme = ThemeHook.theme; //settings this to 'light' or 'dark' updates the theme
+    const theme = 'light'; //settings this to 'light' or 'dark' updates the theme
     const colors = theme ? themedColors[theme] : themedColors.default
     return {
         colors,

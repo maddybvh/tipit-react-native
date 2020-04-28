@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { themedColors } from '../theme/index'
 
 const UserContext = React.createContext({
-    useTheme: () => {}, //possible solution: https://github.com/styled-components/styled-components/issues/2340
-    updateDefaultTipLow: () => {}, //this also isn't wired up to anything
-    updateDefaultTipHigh: () => {}, //this also isn't wired up to anything
+
 })
+
+export const useTheme2 = () => {
+    const theme = useContext(UserContext).theme; //setting this to 'light' or 'dark' updates the theme
+    const colors = theme ? themedColors[theme] : themedColors.default
+    return {
+        colors,
+        theme,
+  }
+}
 
 export const UserProvider = UserContext.Provider
 export const UserConsumer = UserContext.Consumer
