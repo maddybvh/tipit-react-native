@@ -188,7 +188,7 @@ export default class Caculator extends React.Component {
                       <View style={{flexDirection: 'row', alignItems: 'center'}}>
                           <Text style={[styles.normalText, {flex: 3, color:this.state.colors.text}]}>{this.state.message}</Text>
                           <TouchableOpacity onPress={this.clearAll} style={{flex: 1, justifyContent: 'flex-start'}}>
-                              <Text style={[styles.clearButton, {color: this.state.colors.clearButton}]}>X Clear</Text>
+                              <Text style={[styles.clearButton, {color: this.state.colors.clear}]}>X Clear</Text>
                           </TouchableOpacity>
                       </View>
                       }

@@ -16,7 +16,7 @@ export default function App () {
     'JetBrainsMono-Italic': require('./assets/fonts/JetBrainsMono-Italic.ttf'),
   });
 
-  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'dark', useTheme2 }
+  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'light', useTheme2 }
   
   // duplication of useTheme2, should be refactored
   const colors = userSettings.theme ? themedColors[userSettings.theme] : themedColors.default 
