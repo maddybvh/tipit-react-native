@@ -17,9 +17,7 @@ export default function App () {
   });
 
   const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'light', useTheme }
-  
-  // duplication of useTheme, should be refactored
-  const colors = userSettings.theme ? themedColors[userSettings.theme] : themedColors.default 
+  const colors = useTheme
 
 
   if (!fontsLoaded) {
