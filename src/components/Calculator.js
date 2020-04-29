@@ -110,8 +110,8 @@ export const Calculator = () => {
     setMessage('');
   }
   clearAll = () => {
-    clearTable();
     setBill('');
+    clearTable();
   }
 
   //Update the state based on the functions above
@@ -147,7 +147,7 @@ export const Calculator = () => {
           </View>
           <CurrencyInput style={{flex: 2}}
             label='Bill'
-            defaultValue={bill}
+            value={bill}
             onChange={handleBill}
           />
         </View>
