@@ -38,7 +38,7 @@ export const Results = ({results}) =>  {
                 )}
                 keyExtractor={item => item.id}
                 ListHeaderComponent={
-                    results &&
+                    results.length > 0 &&
                         <View style={styles.tableHead}>
                             <Text style={[styles.tableHead, {color: colors.text}]}>Bill</Text>
                             <Text style={[styles.tableHead, {color: colors.text}]}>Tip</Text>
