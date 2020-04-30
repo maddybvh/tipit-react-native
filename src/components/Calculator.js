@@ -158,12 +158,12 @@ export const Calculator = () => {
             </View>
             <View style={styles.inputGroup}>
                 <PercentInput
-                    defaultValue={tipLow}
+                    defaultValue={context.defaultTipLow}
                     onChange={handleTipLow}
                 />
                 <Text style={[styles.normalText, {margin:7, color: colors.text}]}>to</Text>
                 <PercentInput
-                    defaultValue={tipHigh}
+                    defaultValue={context.defaultTipHigh}
                     onChange={handleTipHigh}
                 />                
             </View>

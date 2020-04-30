@@ -16,14 +16,33 @@ export default function App () {
     'JetBrainsMono-Italic': require('./assets/fonts/JetBrainsMono-Italic.ttf'),
   });
 
-  const [theme, setTheme] = useState('light')
-  
-  const toggleTheme = () => {
-    theme == 'light' ? setTheme('dark') : setTheme('light')
-    return theme
+  const [defaultTipLow, setDefaultTipLow] = useState('18');
+  const [defaultTipHigh, setDefaultTipHigh] = useState('25');
+  const [theme, setTheme] = useState('light');
+
+  const updateTipLowContext = (input) => {
+    setDefaultTipLow(input)
   }
 
-  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: theme, useTheme, toggleTheme }
+  const updateTipHighContext = (input) => {
+    setDefaultTipHigh(input)
+  }
+
+  const toggleTheme = () => {
+    theme == 'light' ? setTheme('dark') : setTheme('light')
+  }
+
+
+
+  const userSettings = { 
+    defaultTipLow: defaultTipLow, 
+    defaultTipHigh: defaultTipHigh, 
+    theme: theme, 
+    useTheme, 
+    toggleTheme, 
+    updateTipLowContext, 
+    updateTipHighContext, 
+  }
   
   //this is a repeat of useTheme in /UserContext and should be refactored
   const colors = userSettings.theme ? themedColors[userSettings.theme] : themedColors.default

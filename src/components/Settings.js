@@ -11,7 +11,6 @@ export const Settings = () => {
     const defaultTipLow = context.defaultTipLow;
     const defaultTipHigh = context.defaultTipHigh;
 
-
         return (
             <View>
                 <Text style={[styles.normalText, {color: colors.text}]}>Settings</Text>                          
@@ -19,14 +18,14 @@ export const Settings = () => {
                     <Text style={[styles.label, {color: colors.text}]}>Low tip default:</Text>
                     <PercentInput 
                         defaultValue={defaultTipLow}
-                        // onChange={} //@TODO                   
+                        onChange={context.updateTipLowContext}                  
                     />
                 </View>
                 <View style={styles.inputRow}>
                     <Text style={[styles.label, {color: colors.text}]}>High tip default:</Text>
                     <PercentInput 
                         defaultValue={defaultTipHigh}
-                        //onChange={} //@TODO
+                        onChange={context.updateTipHighContext}
                     />
                 </View>
                 <View style={styles.inputRow}>
