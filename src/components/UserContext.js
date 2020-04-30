@@ -1,9 +1,7 @@
 import React, { useContext } from 'react'
 import { themedColors } from '../theme/index'
 
-const UserContext = React.createContext({
-
-})
+const UserContext = React.createContext()
 
 export const useTheme = () => {
     const theme = useContext(UserContext).theme;
@@ -14,7 +12,10 @@ export const useTheme = () => {
   }
 }
 
-export const UserProvider = UserContext.Provider
+export const UserProvider = ({children},) => (
+  <UserContext.Provider>
+    {children}
+  </UserContext.Provider>)
 export const UserConsumer = UserContext.Consumer
 
 export default UserContext

@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, Switch } from "react-native";
+import UserContext from './UserContext';
 
 export default function ThemeToggle() {
+  const context = useContext(UserContext)
+  
   const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const toggleSwitch = () => {
+    setIsEnabled(previousState => !previousState);
+    context.toggleTheme();
+  }
 
   return (
       <View >

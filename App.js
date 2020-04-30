@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { Header } from './src/components/Header';
 import { Calculator } from './src/components/Calculator';
 import { Footer } from './src/components/Footer';
-import { UserProvider, useTheme } from './src/components/UserContext';
+import UserContext, { UserProvider, useTheme } from './src/components/UserContext';
 import { themedColors } from './src/theme/index'
 
 export default function App () {
@@ -16,7 +16,15 @@ export default function App () {
     'JetBrainsMono-Italic': require('./assets/fonts/JetBrainsMono-Italic.ttf'),
   });
 
-  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: 'dark', useTheme }
+  const [theme, setTheme] = useState('light')
+  
+  const toggleTheme = () => {
+    theme == 'light' ? setTheme('dark') : setTheme('light')
+    return theme
+  }
+
+  const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: theme, useTheme, toggleTheme }
+  
 
   //this is a repeat of useTheme in /UserContext and should be refactored
   const colors = userSettings.theme ? themedColors[userSettings.theme] : themedColors.default
@@ -27,13 +35,13 @@ export default function App () {
   }
   else {
     return (
-      <UserProvider value={userSettings}>
+      <UserContext.Provider value={userSettings}>
         <View style={[styles.container, {backgroundColor: colors.background}]}>
           <Header />
           <Calculator />
           <Footer />
         </View>
-      </UserProvider>
+      </UserContext.Provider>
     )
   }
 }
