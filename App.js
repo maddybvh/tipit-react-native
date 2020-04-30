@@ -5,7 +5,7 @@ import { AppLoading } from 'expo';
 import { Header } from './src/components/Header';
 import { Calculator } from './src/components/Calculator';
 import { Footer } from './src/components/Footer';
-import UserContext, { UserProvider, useTheme } from './src/components/UserContext';
+import UserContext, { useTheme } from './src/components/UserContext';
 import { themedColors } from './src/theme/index'
 
 export default function App () {
@@ -25,7 +25,6 @@ export default function App () {
 
   const userSettings = { defaultTipLow: '18', defaultTipHigh: '25', theme: theme, useTheme, toggleTheme }
   
-
   //this is a repeat of useTheme in /UserContext and should be refactored
   const colors = userSettings.theme ? themedColors[userSettings.theme] : themedColors.default
 

@@ -12,10 +12,7 @@ export const useTheme = () => {
   }
 }
 
-export const UserProvider = ({children},) => (
-  <UserContext.Provider>
-    {children}
-  </UserContext.Provider>)
+export const UserProvider = UserContext.Provider
 export const UserConsumer = UserContext.Consumer
 
 export default UserContext
