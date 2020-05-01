@@ -33,18 +33,20 @@ export const InfoModal = () => {
                   <Text style = {[styles.description, {color: colors.text}]}>A means to enhance palindromic whimsy.</Text>
                   <View style={{flex: 2, justifyContent: 'flex-end', marginBottom: 30}}>
                      <View style={{flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
-                        <Text style = {[styles.normalText, {textAlign: 'left', color: colors.text}]}>(c) Savas Labs 2020</Text>
-                           <Image 
-                           source={require('../../assets/ava-blue.png')} />
+                        <Text style = {[styles.normalText, {textAlign: 'left', color: colors.text, flex: 9}]}>(c) Savas Labs 2020</Text>
+                        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', alignSelf: 'flex-end'}}>
+                           <Image source={require('../../assets/ava-blue.png')} />
+                        </View>
+                        
                      </View>
                      <View style={{flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
-                        <Text style = {[styles.normalText, {color: colors.link, textDecorationLine: 'underline', textAlign: 'left'}]}
-                              onPress={ ()=> Linking.openURL('https:savaslabs.com') }>
-                                 Learn more about our #labs initiative.
-                           </Text>
-                           <Image 
-                           source={require('../../assets/labs.png')}
-                           style={{marginTop: 10}}/>
+                        <Text style = {[styles.normalText, {color: colors.link, textDecorationLine: 'underline', textAlign: 'left', flex: 9}]}
+                           onPress={ ()=> Linking.openURL('https:savaslabs.com') }>
+                           Learn more about our #labs initiative.
+                        </Text>
+                        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', alignSelf: 'flex-end'}}>
+                           <Image source={require('../../assets/labs.png')}/>
+                        </View>
                      </View>
                   </View>
                   <Footer />
