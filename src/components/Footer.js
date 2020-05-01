@@ -12,7 +12,7 @@ export const Footer = () => (
 const styles = StyleSheet.create ({
     container: {
         width: '100%', 
-        height: 50, 
+        height: 35, 
         position: 'absolute',
         alignSelf: 'center',
         bottom: 0,
