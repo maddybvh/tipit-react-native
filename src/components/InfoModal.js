@@ -10,6 +10,7 @@ import UserContext from './UserContext';
 
 export const InfoModal = () => {
    const context = useContext(UserContext)
+   const theme = context.theme
    const { colors } = context.useTheme()
    const { isShowing, toggle } = useModal();
 
@@ -50,7 +51,9 @@ export const InfoModal = () => {
          </Modal>
          <TouchableOpacity style={{padding: 5}} onPress = {() => {toggle()}}>
             <Image 
-               source={require('../../assets/info.png')}
+               source={
+                  (theme == 'light') ? require('../../assets/info.png') : require('../../assets/info-white.png')
+               }
                />
             </TouchableOpacity>
       </View>
