@@ -6,7 +6,7 @@ export const PercentInput = ({ defaultValue, onChange, ...props}) => {
     const context = useContext(AppContext)
     const { colors } = context.useTheme()
     return (
-        <View style={[styles.container, {borderColor: colors.text}]}>
+        <View style={[styles.container, {borderColor: colors.inputBorder}]}>
             <TextInput 
                 keyboardType={'numeric'}
                 style={[styles.input, {color: colors.text}]}

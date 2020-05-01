@@ -6,6 +6,7 @@ const palette = {
     blue: '#0000EE',
     pink: '#F35A69',
     gray: '#d3d3d3',
+    darkGray: '#A9A9A9'
   }
 
 export const colors = {
@@ -14,6 +15,7 @@ export const colors = {
     link: palette.blue,
     background: palette.white,
     row: palette.gray,
+    inputBorder: palette.darkGray,
   }
 
 export const themedColors = {
