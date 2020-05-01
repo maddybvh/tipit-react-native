@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AppContext from './AppContext';
 
-export const Title = (props) => {
+export const Title = () => {
   const context = useContext(AppContext)
   const { colors } = context.useTheme()
   return (
@@ -12,10 +12,10 @@ export const Title = (props) => {
 )}
 
 const styles = StyleSheet.create({
-    title:{
-      fontFamily: 'JetBrainsMono-Bold',
-      fontSize: 24,
-      textAlign: 'center',
-      lineHeight: 45,
-    }
-  });
+  title:{
+    fontFamily: 'JetBrainsMono-Bold',
+    fontSize: 24,
+    textAlign: 'center',
+    lineHeight: 45,
+  }
+});

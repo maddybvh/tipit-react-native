@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { TouchableOpacity, FlatList, StyleSheet, Text, View, Clipboard } from 'react-native';
 import AppContext from './AppContext';
 
-function Item({ id, bill, tip, total, selected, onSelect }) {
+function Item({ bill, tip, total }) {
     const context = useContext(AppContext)
     const { colors } = context.useTheme()
     return (      
@@ -26,7 +26,6 @@ function Item({ id, bill, tip, total, selected, onSelect }) {
 export const Results = ({results}) =>  {    
     const context = useContext(AppContext)
     const { colors } = context.useTheme()
-    
     return (
         <FlatList 
             data={results}

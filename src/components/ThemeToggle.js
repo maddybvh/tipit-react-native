@@ -12,13 +12,12 @@ export default function ThemeToggle() {
   }
 
   return (
-      <View >
-        <Switch style={{marginRight: 5}}
-            trackColor={{ false: "#767577", true: "#767577" }}
-            onValueChange={toggleSwitch}
-            value={isEnabled}
-        />
-      </View>
-
+    <View >
+      <Switch style={{marginRight: 5}}
+          trackColor={{ false: "#767577", true: "#767577" }}
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+      />
+    </View>
   );
 }

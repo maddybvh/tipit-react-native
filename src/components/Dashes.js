@@ -12,4 +12,5 @@ export const Dashes = () => {
       }
       style={{marginTop: 15, marginBottom: 15, width: '100%'}} />
   )
-  }
+}
+

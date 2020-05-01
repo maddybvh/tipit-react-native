@@ -5,7 +5,7 @@ import SettingsModal from './SettingsModal';
 import { Title } from './Title';
 import { Dashes } from './Dashes';
 
-export const Header = (props) => (
+export const Header = () => (
   <View>
     <View style={{flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
       <InfoModal />
@@ -15,4 +15,5 @@ export const Header = (props) => (
     <Dashes />
   </View>
 )
+
 

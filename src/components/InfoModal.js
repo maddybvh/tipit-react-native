@@ -1,5 +1,3 @@
-// Reference: //https://upmostly.com/tutorials/modal-components-react-custom-hooks
-
 import React, { useContext } from 'react';
 import { Modal, Text, View, StyleSheet, Image, Linking, TouchableOpacity} from 'react-native';
 import { Title } from './Title';
@@ -92,4 +90,5 @@ const styles = StyleSheet.create ({
        padding: 10,
        fontSize: 18,
     }
- })
+})
+

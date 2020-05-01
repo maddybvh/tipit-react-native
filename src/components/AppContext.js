@@ -12,7 +12,4 @@ export const useTheme = () => {
   }
 }
 
-//export const AppProvider = AppContext.Provider @TODO remove?
-//export const AppConsumer = AppContext.Consumer
-
 export default AppContext

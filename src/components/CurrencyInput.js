@@ -44,3 +44,4 @@ export const CurrencyInput = ({ value, onChange, ...props}) => {
         paddingRight: 5,
     },
   });
+  

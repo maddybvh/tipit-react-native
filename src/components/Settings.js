@@ -8,34 +8,33 @@ export const Settings = () => {
     const context = useContext(AppContext)
     const { colors } = context.useTheme()
 
-    const defaultTipLow = context.defaultTipLow;
-    const defaultTipHigh = context.defaultTipHigh;
+    const defaultTipLow = context.defaultTipLow
+    const defaultTipHigh = context.defaultTipHigh
 
-        return (
-            <View>
-                <Text style={[styles.normalText, {color: colors.text}]}>Settings</Text>                          
-                <View style={styles.inputRow}>
-                    <Text style={[styles.label, {color: colors.text}]}>Low tip default:</Text>
-                    <PercentInput 
-                        defaultValue={defaultTipLow}
-                        onChange={context.updateTipLowContext}                  
-                    />
-                </View>
-                <View style={styles.inputRow}>
-                    <Text style={[styles.label, {color: colors.text}]}>High tip default:</Text>
-                    <PercentInput 
-                        defaultValue={defaultTipHigh}
-                        onChange={context.updateTipHighContext}
-                    />
-                </View>
-                <View style={styles.inputRow}>
-                    <Text style={[styles.label, {color: colors.text}]}>Dark Mode:</Text>
-                    <ThemeToggle />
-                </View>
+    return (
+        <View>
+            <Text style={[styles.normalText, {color: colors.text}]}>Settings</Text>                          
+            <View style={styles.inputRow}>
+                <Text style={[styles.label, {color: colors.text}]}>Low tip default:</Text>
+                <PercentInput 
+                    defaultValue={defaultTipLow}
+                    onChange={context.updateTipLowContext}                  
+                />
             </View>
-        );
+            <View style={styles.inputRow}>
+                <Text style={[styles.label, {color: colors.text}]}>High tip default:</Text>
+                <PercentInput 
+                    defaultValue={defaultTipHigh}
+                    onChange={context.updateTipHighContext}
+                />
+            </View>
+            <View style={styles.inputRow}>
+                <Text style={[styles.label, {color: colors.text}]}>Dark Mode:</Text>
+                <ThemeToggle />
+            </View>
+        </View>
+    );
 }
-
 
 const styles = StyleSheet.create({
     inputRow: {
@@ -49,13 +48,11 @@ const styles = StyleSheet.create({
       fontSize: 18,
       lineHeight: 24,
       alignSelf:'flex-start',
-      //color: colors.text,
     },
     normalText: {
       fontFamily: 'JetBrainsMono-Bold', 
       fontSize: 14,
       lineHeight: 16,
       textAlign: 'center',
-      //color: colors.text,
     },
-  });
+})

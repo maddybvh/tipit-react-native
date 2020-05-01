@@ -190,9 +190,6 @@ export const Calculator = () => {
     );
   }
 
-
-
-
 const styles = StyleSheet.create({
   inputRow: {
     flexDirection: 'row', 
