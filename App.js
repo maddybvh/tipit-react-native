@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { Header } from './src/components/Header';
@@ -32,8 +32,6 @@ export default function App () {
     theme == 'light' ? setTheme('dark') : setTheme('light')
   }
 
-
-
   const userSettings = { 
     defaultTipLow: defaultTipLow, 
     defaultTipHigh: defaultTipHigh, 
@@ -44,9 +42,8 @@ export default function App () {
     updateTipHighContext, 
   }
   
-  //this is a repeat of useTheme in /AppContext and should be refactored
+  //This is a repeat of useTheme() in /AppContext
   const colors = userSettings.theme ? themedColors[userSettings.theme] : themedColors.default
-
 
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -54,10 +51,12 @@ export default function App () {
   else {
     return (
       <AppContext.Provider value={userSettings}>
-        <View style={[styles.container, {backgroundColor: colors.background}]}>
-          <Header />
-          <Calculator />
-          <Footer />
+        <View style={{flex: 1, backgroundColor: colors.background}}>
+          <SafeAreaView style={styles.container}>
+            <Header />
+            <Calculator />
+            <Footer />
+          </SafeAreaView>
         </View>
       </AppContext.Provider>
     )
@@ -67,8 +66,7 @@ export default function App () {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 60,
-    padding: 10,
-    display: 'flex',
+    marginHorizontal: 8,
   }
 });
+

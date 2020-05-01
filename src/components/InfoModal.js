@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Modal, Text, View, StyleSheet, Image, Linking, TouchableOpacity} from 'react-native';
+import { Modal, Text, View, StyleSheet, Image, Linking, TouchableOpacity, SafeAreaView } from 'react-native';
 import { Title } from './Title';
 import { Footer } from './Footer';
 import { Dashes } from './Dashes';
@@ -14,38 +14,42 @@ export const InfoModal = () => {
 
    return (
       <View style = {[styles.container, {backgroundColor: colors.background}]}>
-         <Modal animationType = {"slide"} transparent = {false}
+         <Modal 
+            animationType = {"slide"} transparent = {false}
             visible = {isShowing}
-            onRequestClose = {() => { console.log("Modal has been closed.") } }>
-            <View style = {[styles.modal, {backgroundColor: colors.background}]}>
-               <View style={{alignSelf: 'flex-start', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
-                  <TouchableOpacity style={{padding: 5, flex: 1}} onPress = {() => {toggle()}}> 
-                        <Text style = {[styles.clear, {color: colors.clear}]}>X</Text>
-                  </TouchableOpacity>
-                     <Title style = {{flex: 1}}/>
-                  <View style = {{flex: 1}}></View>
-               </View>
-               <Dashes />
-               <Text style = {[styles.normalText, {fontFamily: 'JetBrainsMono-Bold', color: colors.text}]}>What is this app?</Text>
-               <Text style = {[styles.description, {color: colors.text}]}>A means to enhance palindromic whimsy.</Text>
-               <View style={{flex: 2, justifyContent: 'flex-end', marginBottom: 30}}>
-                  <View style={{flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
-                     <Text style = {[styles.normalText, {textAlign: 'left', color: colors.text}]}>(c) Savas Labs 2020</Text>
-                        <Image 
-                        source={require('../../assets/ava-blue.png')} />
+            onRequestClose = {() => { console.log("Modal has been closed.")}}
+            >
+            <View style={{flex: 1, backgroundColor: colors.background}}>
+               <SafeAreaView style = {[styles.modal, {backgroundColor: colors.background}]}>
+                  <View style={{alignSelf: 'flex-start', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
+                     <TouchableOpacity style={{padding: 5, flex: 1}} onPress = {() => {toggle()}}> 
+                           <Text style = {[styles.clear, {color: colors.clear}]}>X</Text>
+                     </TouchableOpacity>
+                        <Title style = {{flex: 1}}/>
+                     <View style = {{flex: 1}}></View>
                   </View>
-                  <View style={{flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
-                     <Text style = {[styles.normalText, {color: colors.link, textDecorationLine: 'underline', textAlign: 'left'}]}
-                           onPress={ ()=> Linking.openURL('https:savaslabs.com') }>
-                              Learn more about our #labs initiative.
-                        </Text>
-                        <Image 
-                        source={require('../../assets/labs.png')}
-                        style={{marginTop: 10}}/>
+                  <Dashes />
+                  <Text style = {[styles.normalText, {fontFamily: 'JetBrainsMono-Bold', color: colors.text}]}>What is this app?</Text>
+                  <Text style = {[styles.description, {color: colors.text}]}>A means to enhance palindromic whimsy.</Text>
+                  <View style={{flex: 2, justifyContent: 'flex-end', marginBottom: 30}}>
+                     <View style={{flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
+                        <Text style = {[styles.normalText, {textAlign: 'left', color: colors.text}]}>(c) Savas Labs 2020</Text>
+                           <Image 
+                           source={require('../../assets/ava-blue.png')} />
+                     </View>
+                     <View style={{flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center'}}>
+                        <Text style = {[styles.normalText, {color: colors.link, textDecorationLine: 'underline', textAlign: 'left'}]}
+                              onPress={ ()=> Linking.openURL('https:savaslabs.com') }>
+                                 Learn more about our #labs initiative.
+                           </Text>
+                           <Image 
+                           source={require('../../assets/labs.png')}
+                           style={{marginTop: 10}}/>
+                     </View>
                   </View>
-               </View>
-               <Footer />
-            </View>
+                  <Footer />
+               </SafeAreaView>
+            </View>  
          </Modal>
          <TouchableOpacity style={{padding: 5}} onPress = {() => {toggle()}}>
             <Image 
@@ -65,10 +69,7 @@ const styles = StyleSheet.create ({
     },
     modal: {
       flex: 1,
-      paddingTop: 60,
-      paddingBottom: 60,
-      padding: 10,
-      display: 'flex',
+      marginHorizontal: 8,
     },
     normalText: {
       fontFamily: 'JetBrainsMono-Regular', 

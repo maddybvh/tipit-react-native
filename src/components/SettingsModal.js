@@ -1,7 +1,5 @@
-// Reference: //https://upmostly.com/tutorials/modal-components-react-custom-hooks
-
 import React, { useContext } from 'react';
-import { Modal, Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Modal, Text, View, StyleSheet, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import { Title } from './Title';
 import { Footer } from './Footer';
 import { Dashes } from './Dashes';
@@ -19,18 +17,19 @@ export const SettingsModal = () => {
          <Modal animationType = {"slide"} transparent = {false}
             visible = {isShowing}
             onRequestClose = {() => { console.log("Modal has been closed.") } }>
-            
-            <View style = {[styles.modal, {backgroundColor: colors.background}]}>
-               <View style= {{flexDirection: 'row', justifyContent: 'space-between'}}>
-                  <View style={{flex: 1}}></View>
-                  <Title style={{flex: 1}}/>
-                  <TouchableOpacity style={{padding: 5, flex: 1}} onPress = {() => {toggle()}}> 
-                        <Text style = {[styles.clear, {color: colors.clear}]}>X</Text>
-                  </TouchableOpacity>
-               </View>
-               <Dashes />
-               <Settings />
-               <Footer />
+            <View style={{flex: 1, backgroundColor: colors.background}}>
+               <SafeAreaView style = {[styles.modal, {backgroundColor: colors.background}]}>
+                  <View style= {{flexDirection: 'row', justifyContent: 'space-between'}}>
+                     <View style={{flex: 1}}></View>
+                     <Title style={{flex: 1}}/>
+                     <TouchableOpacity style={{padding: 5, flex: 1}} onPress = {() => {toggle()}}> 
+                           <Text style = {[styles.clear, {color: colors.clear}]}>X</Text>
+                     </TouchableOpacity>
+                  </View>
+                  <Dashes />
+                  <Settings />
+                  <Footer />
+               </SafeAreaView>
             </View>
          </Modal>
          <TouchableOpacity style={{padding: 5}} onPress = {() => {toggle()}}>
@@ -51,9 +50,7 @@ const styles = StyleSheet.create ({
     },
     modal: {
       flex: 1,
-      paddingTop: 60,
-      padding: 10,
-      display: 'flex',
+      marginHorizontal: 8,
     },
     text: {
        color: '#3f2949',
