@@ -6,10 +6,10 @@ import { Title } from './Title';
 import { Footer } from './Footer';
 import { Dashes } from './Dashes';
 import useModal from '../hooks/useModal.js'
-import UserContext from './UserContext';
+import AppContext from './AppContext';
 
 export const InfoModal = () => {
-   const context = useContext(UserContext)
+   const context = useContext(AppContext)
    const theme = context.theme
    const { colors } = context.useTheme()
    const { isShowing, toggle } = useModal();

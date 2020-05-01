@@ -1,16 +1,16 @@
 // Reference: //https://upmostly.com/tutorials/modal-components-react-custom-hooks
 
 import React, { useContext } from 'react';
-import { Modal, Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import { Modal, Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Title } from './Title';
 import { Footer } from './Footer';
 import { Dashes } from './Dashes';
 import { Settings } from './Settings.js';
 import useModal from '../hooks/useModal.js'
-import UserContext from './UserContext';
+import AppContext from './AppContext';
 
 export const SettingsModal = () => {
-   const context = useContext(UserContext)
+   const context = useContext(AppContext)
    const theme = context.theme
    const { colors } = context.useTheme()
    const { isShowing, toggle } = useModal();
@@ -32,7 +32,6 @@ export const SettingsModal = () => {
                      <Settings />
                      <Footer />
                   </View>
-
                </Modal>
                <TouchableOpacity style={{padding: 5}} onPress = {() => {toggle()}}>
                   <Image 

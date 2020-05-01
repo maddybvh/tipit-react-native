@@ -4,7 +4,7 @@ import { CurrencyInput } from './CurrencyInput';
 import { PercentInput } from './PercentInput';
 import { Dashes } from './Dashes';
 import { Results } from './Results';
-import UserContext from './UserContext';
+import AppContext from './AppContext';
 
 let resultID = 0;
 
@@ -83,7 +83,7 @@ function Result (id, bill, tip, total) {
 
 
 export const Calculator = () => {
-  const context = useContext(UserContext)
+  const context = useContext(AppContext)
   const { colors } = context.useTheme()
   
   const [tipLow, setTipLow] = useState(context.defaultTipLow);

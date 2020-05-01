@@ -5,7 +5,7 @@ import { AppLoading } from 'expo';
 import { Header } from './src/components/Header';
 import { Calculator } from './src/components/Calculator';
 import { Footer } from './src/components/Footer';
-import UserContext, { useTheme } from './src/components/UserContext';
+import AppContext, { useTheme } from './src/components/AppContext';
 import { themedColors } from './src/theme/index'
 
 export default function App () {
@@ -44,7 +44,7 @@ export default function App () {
     updateTipHighContext, 
   }
   
-  //this is a repeat of useTheme in /UserContext and should be refactored
+  //this is a repeat of useTheme in /AppContext and should be refactored
   const colors = userSettings.theme ? themedColors[userSettings.theme] : themedColors.default
 
 
@@ -53,13 +53,13 @@ export default function App () {
   }
   else {
     return (
-      <UserContext.Provider value={userSettings}>
+      <AppContext.Provider value={userSettings}>
         <View style={[styles.container, {backgroundColor: colors.background}]}>
           <Header />
           <Calculator />
           <Footer />
         </View>
-      </UserContext.Provider>
+      </AppContext.Provider>
     )
   }
 }

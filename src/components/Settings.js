@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ThemeToggle from './ThemeToggle.js';
-import UserContext from './UserContext';
+import AppContext from './AppContext';
 import { PercentInput } from './PercentInput';
 
 export const Settings = () => {
-    const context = useContext(UserContext)
+    const context = useContext(AppContext)
     const { colors } = context.useTheme()
 
     const defaultTipLow = context.defaultTipLow;

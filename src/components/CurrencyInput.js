@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
-import UserContext from './UserContext';
+import AppContext from './AppContext';
 
 export const CurrencyInput = ({ value, onChange, ...props}) => {
-    const context = useContext(UserContext);
+    const context = useContext(AppContext);
     const { colors } = context.useTheme();
 
     return (

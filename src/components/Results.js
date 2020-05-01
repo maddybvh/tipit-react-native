@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { TouchableOpacity, FlatList, StyleSheet, Text, View, Clipboard } from 'react-native';
-import UserContext from './UserContext';
+import AppContext from './AppContext';
 
 function Item({ id, bill, tip, total, selected, onSelect }) {
-    const context = useContext(UserContext)
+    const context = useContext(AppContext)
     const { colors } = context.useTheme()
     return (      
         <TouchableOpacity 
@@ -24,29 +24,30 @@ function Item({ id, bill, tip, total, selected, onSelect }) {
 
 
 export const Results = ({results}) =>  {    
-    const context = useContext(UserContext)
+    const context = useContext(AppContext)
     const { colors } = context.useTheme()
-        return (
-            <FlatList 
-                data={results}
-                renderItem={({ item, index }) => (
-                    <Item
-                        bill={item.bill}
-                        tip={item.tip}
-                        total={item.total}
-                    />               
-                )}
-                keyExtractor={item => item.id}
-                ListHeaderComponent={
-                    results.length > 0 &&
-                        <View style={styles.tableHead}>
-                            <Text style={[styles.tableHead, {color: colors.text}]}>Bill</Text>
-                            <Text style={[styles.tableHead, {color: colors.text}]}>Tip</Text>
-                            <Text style={[styles.tableHead, {textAlign: 'right', color: colors.text}]}>Total</Text>
-                        </View>
-                    }
-            />
-        );
+    
+    return (
+        <FlatList 
+            data={results}
+            renderItem={({ item, index }) => (
+                <Item
+                    bill={item.bill}
+                    tip={item.tip}
+                    total={item.total}
+                />               
+            )}
+            keyExtractor={item => item.id}
+            ListHeaderComponent={
+                results.length > 0 &&
+                    <View style={styles.tableHead}>
+                        <Text style={[styles.tableHead, {color: colors.text}]}>Bill</Text>
+                        <Text style={[styles.tableHead, {color: colors.text}]}>Tip</Text>
+                        <Text style={[styles.tableHead, {textAlign: 'right', color: colors.text}]}>Total</Text>
+                    </View>
+                }
+        />
+    );
 }
 
 const styles = StyleSheet.create({

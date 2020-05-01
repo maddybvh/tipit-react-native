@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { themedColors } from '../theme/index'
 
-const UserContext = React.createContext()
+const AppContext = React.createContext()
 
 export const useTheme = () => {
-    const theme = useContext(UserContext).theme;
+    const theme = useContext(AppContext).theme;
     const colors = theme ? themedColors[theme] : themedColors.default
     return {
         colors,
@@ -12,7 +12,7 @@ export const useTheme = () => {
   }
 }
 
-export const UserProvider = UserContext.Provider
-export const UserConsumer = UserContext.Consumer
+//export const AppProvider = AppContext.Provider @TODO remove?
+//export const AppConsumer = AppContext.Consumer
 
-export default UserContext
+export default AppContext

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Image } from 'react-native';
-import UserContext from './UserContext';
+import AppContext from './AppContext';
 
 
 export const Dashes = () => {
-  const theme = useContext(UserContext).theme;
+  const theme = useContext(AppContext).theme;
   return (
     <Image 
       source={
@@ -13,5 +13,3 @@ export const Dashes = () => {
       style={{marginTop: 15, marginBottom: 15, width: '100%'}} />
   )
   }
-
-
