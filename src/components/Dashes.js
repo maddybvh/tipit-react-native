@@ -10,7 +10,7 @@ export const Dashes = () => {
       source={
          (theme == 'light') ? require('../../assets/dashes.png') : require('../../assets/dashes-white.png')
       }
-      style={{marginTop: 15, marginBottom: 15, width: '100%'}} />
+      style={{marginTop: 10, marginBottom: 10, width: '100%'}} />
   )
 }
 
