@@ -18,29 +18,28 @@ export default function App () {
         theme: userSettings.theme,
       }
       await AsyncStorage.setItem('@store:appContext', JSON.stringify(settingsToSave));
-      console.log('Stored data = ' + JSON.stringify(settingsToSave) )
     } catch (error) {
       console.log('Error saving user settings.')
     }
   };
   
+  const [initialAppLoad, setInitialAppLoad] = useState(true);
+
   const _retrieveData = async () => {
     try {
-      const value = await JSON.parse(AsyncStorage.getItem('@store:appContext'));
-      if (value.theme !== null) {
-        savedSettings = {
-          defaultTipLow: value.defaultTipLow,
-          defaultTipHigh: value.setDefaultTipHigh,
-          theme: value.theme,
-        }
-        return savedSettings
+      const value = await AsyncStorage.getItem('@store:appContext');
+      const savedSettings = JSON.parse(value)
+      
+      if (savedSettings !== null) {
+        setDefaultTipLow(savedSettings.defaultTipLow)
+        setDefaultTipHigh(savedSettings.defaultTipHigh)
+        setTheme(savedSettings.theme)
       }
     } catch (error) {
       console.log('No user setting data was retrieved');
     }
+    setInitialAppLoad(false);
   };
-
-  let savedSettings = _retrieveData();
   
   let [fontsLoaded] = useFonts({
     'JetBrainsMono-Regular': require('./assets/fonts/JetBrainsMono-Regular.ttf'),
@@ -77,9 +76,7 @@ export default function App () {
   //This is a repeat of useTheme() in /AppContext
   const colors = userSettings.theme ? themedColors[userSettings.theme] : themedColors.default
 
-  useEffect(() => {
-    _storeData()
-  })
+  useEffect(() => { initialAppLoad ? _retrieveData() : _storeData() })
 
   if (!fontsLoaded) {
     return <AppLoading />;
