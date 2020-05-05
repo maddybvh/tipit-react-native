@@ -116,10 +116,11 @@ export const Calculator = () => {
 
   //Update the state based on the functions above
   findResults = () => {
-    if (bill && tipLow && tipHigh && (parseFloat(tipLow) <= parseFloat(tipHigh))){
-      const billFloat = parseFloat(bill);
-      const tipLowFloat = parseFloat(tipLow);
-      const tipHighFloat = parseFloat(tipHigh);
+    const billFloat = parseFloat(bill);
+    const tipLowFloat = parseFloat(tipLow);
+    const tipHighFloat = parseFloat(tipHigh);
+
+    if (billFloat && tipLowFloat && tipHighFloat && tipLowFloat <= tipHighFloat){
 
       const tipArray = findPalTips(billFloat, tipLowFloat, tipHighFloat);
       const allTotalArray = arrayTipsAndTotals(billFloat, tipArray);
