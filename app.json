@@ -2,6 +2,7 @@
   "expo": {
     "name": "tipit",
     "slug": "tipit",
+    "description": "An app to enhance palindromic whimsey: calculate the optimal palindromic tip for a given bill.",
     "platforms": [
       "ios",
       "android",
