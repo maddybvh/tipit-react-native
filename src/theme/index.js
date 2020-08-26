@@ -1,36 +1,37 @@
 const palette = {
-    black: '#000000',
-    white: '#FFFFFF',
-    darkBlue: '#221C35',
-    red: '#FF0000',
-    blue: '#0000EE',
-    pink: '#F35A69',
-    gray: '#d3d3d3',
-    darkGray: '#A9A9A9'
-  }
+  black: "#000000",
+  white: "#FFFFFF",
+  darkBlue: "#221C35",
+  red: "#FF0000",
+  blue: "#0000EE",
+  pink: "#F35A69",
+  gray: "#d3d3d3",
+  darkGray: "#A9A9A9",
+  nearBlack: "#333333",
+};
 
 export const colors = {
-    text: palette.black,
-    clear: palette.red,
-    link: palette.blue,
-    background: palette.white,
-    row: palette.gray,
-    inputBorder: palette.darkGray,
-  }
+  text: palette.black,
+  clear: palette.red,
+  link: palette.blue,
+  background: palette.white,
+  row: palette.gray,
+  inputBorder: palette.darkGray,
+};
 
 export const themedColors = {
   default: {
-      ...colors,
+    ...colors,
   },
   light: {
-      ...colors,
+    ...colors,
   },
   dark: {
-      ...colors,
-      text: palette.white,
-      background: palette.darkBlue,
-      link: palette.pink,
-      clear: palette.pink,
-      row: palette.darkBlue,
+    ...colors,
+    text: palette.white,
+    background: palette.nearBlack,
+    link: palette.pink,
+    clear: palette.pink,
+    row: palette.darkBlue,
   },
-}
+};
