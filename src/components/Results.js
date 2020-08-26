@@ -40,7 +40,7 @@ export const Results = ({ results }) => {
     <FlatList
       data={results}
       renderItem={({ item, index }) => (
-        <Item bill={item.bill} tip={item.tip} total={item.total} />
+        <Item bill={item.bill} tip={item.tip} total={item.total} key={index} />
       )}
       keyExtractor={item => item.id}
       ListHeaderComponent={
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   item: {
     padding: 10,
     marginVertical: 8,
-    marginHorizontal: 10,
+    marginHorizontal: 0,
     borderRadius: 3,
   },
   tableHead: {

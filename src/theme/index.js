@@ -6,8 +6,9 @@ const palette = {
   blue: "#0000EE",
   pink: "#F35A69",
   gray: "#d3d3d3",
-  darkGray: "#A9A9A9",
-  nearBlack: "#333333",
+  midGray: "#A9A9A9",
+  darkGray: "#333333",
+  nearBlack: "#1e1e1e",
 };
 
 export const colors = {
@@ -16,7 +17,7 @@ export const colors = {
   link: palette.blue,
   background: palette.white,
   row: palette.gray,
-  inputBorder: palette.darkGray,
+  inputBorder: palette.midGray,
 };
 
 export const themedColors = {
@@ -32,6 +33,6 @@ export const themedColors = {
     background: palette.nearBlack,
     link: palette.pink,
     clear: palette.pink,
-    row: palette.darkBlue,
+    row: palette.darkGray,
   },
 };
