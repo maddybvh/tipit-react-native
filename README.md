@@ -1,6 +1,5 @@
 # tipit
 
-
 ## Quickstart
 
 To run this application locally, you will need to install Node.js. On OSX you can install Node.js with:
@@ -42,4 +41,4 @@ yarn install
 yarn start
 ```
 
-In the "Metro Bundler" webpage that expo opens, click "Run on iOS Simulator". (You may need to install or updated Xcode for the simulator to start.)
+In the "Metro Bundler" webpage that expo opens, click "Run on iOS Simulator". (You may need to install or update Xcode for the simulator to start.)
