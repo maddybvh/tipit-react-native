@@ -197,7 +197,7 @@ export const Calculator = () => {
           />
         </View>
       </View>
-      <View style={{ minHeight: 28 }}>
+      <View style={{ minHeight: 30 }}>
         {/* If there are results, print the message and clear button. */}
         {results && (
           <View style={{ flexDirection: "row", alignItems: "center" }}>

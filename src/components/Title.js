@@ -17,6 +17,6 @@ const styles = StyleSheet.create({
     fontFamily: "JetBrainsMono-Bold",
     fontSize: 24,
     textAlign: "center",
-    lineHeight: 40,
+    lineHeight: 48,
   },
 });
