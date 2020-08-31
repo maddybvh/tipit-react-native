@@ -169,6 +169,10 @@ export const Calculator = () => {
           label="Bill"
           value={bill}
           onChange={handleBill}
+          accessibility={true}
+          accessibilityLabel="Bill"
+          accessibilityHint="Enter your pre-tip bill amount"
+          accesibilityRole="adjustable"
         />
       </View>
       <View style={styles.inputRow}>
@@ -182,6 +186,10 @@ export const Calculator = () => {
           <PercentInput
             defaultValue={context.defaultTipLow}
             onChange={handleTipLow}
+            accessibility={true}
+            accessibilityLabel="Tip - low"
+            accessibilityHint="Enter the lowest percentage you are willing to tip"
+            accesibilityRole="adjustable"
           />
           <Text
             style={[
@@ -194,6 +202,10 @@ export const Calculator = () => {
           <PercentInput
             defaultValue={context.defaultTipHigh}
             onChange={handleTipHigh}
+            accessibility={true}
+            accessibilityLabel="Tip - high"
+            accessibilityHint="Enter the highest percentage you are willing to tip"
+            accesibilityRole="adjustable"
           />
         </View>
       </View>
@@ -207,6 +219,10 @@ export const Calculator = () => {
             <TouchableOpacity
               onPress={clearAll}
               style={{ flex: 1, justifyContent: "flex-start" }}
+              accessibility={true}
+              accessibilityLabel="Clear"
+              accessibilityHint="Clear the bill amount and any results"
+              accesibilityRole="button"
             >
               <Text style={[styles.clearButton, { color: colors.clear }]}>
                 X Clear

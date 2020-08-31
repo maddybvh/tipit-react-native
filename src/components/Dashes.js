@@ -12,6 +12,7 @@ export const Dashes = () => {
           : require("../../assets/dashes-white.png")
       }
       style={{ marginTop: 6, marginBottom: 6, width: "100%" }}
+      alt="dashes"
     />
   );
 };

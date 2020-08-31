@@ -6,7 +6,7 @@ import { Title } from "./Title";
 import { Dashes } from "./Dashes";
 
 export const Header = () => (
-  <View>
+  <View accessibilityRole="header">
     <View
       style={{
         flexDirection: "row",

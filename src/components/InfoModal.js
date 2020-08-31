@@ -10,7 +10,6 @@ import {
   SafeAreaView,
 } from "react-native";
 import { Title } from "./Title";
-import { Footer } from "./Footer";
 import { Dashes } from "./Dashes";
 import useModal from "../hooks/useModal.js";
 import AppContext from "./AppContext";
@@ -30,6 +29,7 @@ export const InfoModal = () => {
         onRequestClose={() => {
           console.log("Modal has been closed.");
         }}
+        accessibilityViewIsModal={true}
       >
         <View style={{ flex: 1, backgroundColor: colors.background }}>
           <SafeAreaView
@@ -48,6 +48,10 @@ export const InfoModal = () => {
                 onPress={() => {
                   toggle();
                 }}
+                accessibility={true}
+                accessibilityLabel="Close"
+                accessibilityHint="Close info modal"
+                accessibilityRole="button"
               >
                 <Text style={[styles.clear, { color: colors.clear }]}>X</Text>
               </TouchableOpacity>
@@ -76,6 +80,7 @@ export const InfoModal = () => {
             >
               <TouchableOpacity
                 onPress={() => Linking.openURL("https://savaslabs.com/labs")}
+                accessibilityRole="link"
               >
                 <Image
                   source={
@@ -101,6 +106,10 @@ export const InfoModal = () => {
         onPress={() => {
           toggle();
         }}
+        accessibility={true}
+        accessibilityLabel="Info"
+        accessibilityHint="Opens the info modal"
+        accessibilityRole="button"
       >
         <Image
           source={

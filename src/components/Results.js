@@ -42,7 +42,8 @@ export const Results = ({ results }) => {
       renderItem={({ item, index }) => (
         <Item bill={item.bill} tip={item.tip} total={item.total} key={index} />
       )}
-      keyExtractor={item => item.id}
+      keyExtractor={(item) => item.id}
+      accessibilityLiveRegion="polite"
       ListHeaderComponent={
         results &&
         results.length > 0 && (
