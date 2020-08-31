@@ -183,7 +183,12 @@ export const Calculator = () => {
             defaultValue={context.defaultTipLow}
             onChange={handleTipLow}
           />
-          <Text style={[styles.normalText, { margin: 7, color: colors.text }]}>
+          <Text
+            style={[
+              styles.normalText,
+              { margin: 7, marginTop: 12, color: colors.text },
+            ]}
+          >
             to
           </Text>
           <PercentInput
@@ -192,7 +197,7 @@ export const Calculator = () => {
           />
         </View>
       </View>
-      <View style={{ minHeight: 50 }}>
+      <View style={{ minHeight: 28 }}>
         {/* If there are results, print the message and clear button. */}
         {results && (
           <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -223,12 +228,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginVertical: 12,
+    marginVertical: 10,
   },
   label: {
     fontFamily: "JetBrainsMono-Regular",
     fontSize: 18,
-    lineHeight: 24,
+    lineHeight: 18,
   },
   helper: {
     fontFamily: "JetBrainsMono-Italic",
@@ -238,8 +243,8 @@ const styles = StyleSheet.create({
   normalText: {
     fontFamily: "JetBrainsMono-Regular",
     fontSize: 12,
-    lineHeight: 20,
-    marginTop: 10,
+    lineHeight: 16,
+    marginTop: 4,
   },
   clearButton: {
     fontFamily: "JetBrainsMono-Regular",
