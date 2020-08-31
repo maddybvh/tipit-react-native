@@ -8,7 +8,7 @@ const palette = {
   gray: "#d3d3d3",
   midGray: "#A9A9A9",
   darkGray: "#333333",
-  nearBlack: "#1e1e1e",
+  nearBlack: "#252525",
 };
 
 export const colors = {
